@@ -1,5 +1,5 @@
 # Chorus
-A music guessing game developed using PHP and JS.
+A music guessing game developed using PHP and JS. -collab with [RitwikGarg](https://github.com/ritwikgarg)
 
 
 ## Requirements
