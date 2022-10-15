@@ -10,7 +10,7 @@
     <script src="https://kit.fontawesome.com/fddf746e6f.js" crossorigin="anonymous"></script>
 
     <!-- CSS sheet link -->
-    <link rel="stylesheet" href="/CSS/styles.css">
+    <link rel="stylesheet" href="./CSS/styles.css">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -44,7 +44,7 @@
             <div class="card">
                 <div class="card_inner">
                     <div class="card_face card_face--front">
-                        <img class="fav-artist-img" src="/Images/illustration-hero.svg" alt="fav-artist-img">
+                        <img class="fav-artist-img" src="./Images/illustration-hero.svg" alt="fav-artist-img">
                         <p class="fav-artist-title">Favourite Artist</p>
                     </div>
                     <div class="card_face card_face--back">
@@ -55,7 +55,7 @@
             <div class="card">
                 <div class="card_inner">
                     <div class="card_face card_face--front">
-                        <img class="bb-hot100-img" src="/Images/Billboard-Hot-100-new.jpg" alt="bb-hot100-img">
+                        <img class="bb-hot100-img" src="./Images/Billboard-Hot-100-new.jpg" alt="bb-hot100-img">
                         <p class="bb-hot100-title">Billboard Hot 100</p>
                     </div>
                     <div class="card_face card_face--back">
@@ -80,7 +80,7 @@
     <section id="about_us"></section>
 
     <!-- Script link -->
-    <script src="/JavaScript/main.js"></script>
+    <script src="./JavaScript/main.js"></script>
 
 </body>
 
