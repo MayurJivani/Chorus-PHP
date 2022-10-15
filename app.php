@@ -13,6 +13,6 @@
     
     // Getting Spotify catalog data is of course also possible
     print_r(
-        $api->getTrack('7EjyzZcbLxW7PaaLua9Ksb')
+        $api->getTrack('2cvFLZPAQoGeQnIRPt2LHE')
     );
 ?>
