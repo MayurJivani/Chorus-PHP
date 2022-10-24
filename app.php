@@ -7,8 +7,8 @@
     $api->setAccessToken($_SESSION["accessToken"]);
     
     // It's now possible to request data about the currently authenticated user
-    $per_data = json_encode ((array) $api->me());
-   // var_dump ($per_data);
+     $me=$api->me();
+      
     
     $results = $api->search('Harry Styles', 'artist');
 
@@ -25,4 +25,7 @@
            break; 
             
     }
+    /* "<h1><?php echo "$me->display_name"; ?><h1>" -To Display Current Logged in user name*/
 ?>
+
+
