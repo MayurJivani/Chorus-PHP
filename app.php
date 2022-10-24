@@ -7,12 +7,22 @@
     $api->setAccessToken($_SESSION["accessToken"]);
     
     // It's now possible to request data about the currently authenticated user
-    print_r(
-        $api->me()
-    );
+    $per_data = json_encode ((array) $api->me());
+   // var_dump ($per_data);
     
-    // Getting Spotify catalog data is of course also possible
-    print_r(
-        $api->getTrack('2cvFLZPAQoGeQnIRPt2LHE')
-    );
+    $results = $api->search('Harry Styles', 'artist');
+
+    foreach ($results->artists->items as $artist) {
+            $result=$api->getArtistAlbums($artist->id);
+            foreach ($result->items as $t) {
+                $album_result=$api->getAlbumTracks($t->id);
+                foreach ($album_result->items as $ft) {
+                   $track_result=$api->getTrack($ft->id);
+                   break;
+                }
+                break;
+            }
+           break; 
+            
+    }
 ?>
