@@ -6,6 +6,7 @@
 <head>
     <title>Spotify Web Playback SDK Quick Start</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.1.3/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
     <h1>Spotify Web Playback SDK Quick Start</h1>
@@ -50,6 +51,7 @@
 
             document.getElementById('togglePlay').onclick = function() {
               player.togglePlay();
+              $.ajax({url:"app.php"})
               
             };
 
@@ -59,3 +61,5 @@
     
 </body>
 </html>
+
+

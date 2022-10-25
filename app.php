@@ -1,4 +1,5 @@
 <?php
+    function start_playback(){
     require 'vendor/autoload.php';
     $api = new SpotifyWebAPI\SpotifyWebAPI();
     session_start();
@@ -29,16 +30,13 @@
     $a=$api->getMyDevices();
 
     foreach($a->devices as $Did){
-        $pdevice=$Did->id;
+        $PlaybackDeviceId=$Did->id;
         break;
     }
-
-    $api->play($_COOKIE["deviceID"], [
+    $api->play($PlaybackDeviceId, [
         'uris' => [$track_result->uri],
     ]);
     
-
-    /* "<h1><?php echo "$me->display_name"; ?><h1>" -To Display Current Logged in user name*/
+    }
+    start_playback();
 ?>
-
-
