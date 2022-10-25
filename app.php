@@ -11,6 +11,7 @@
       
     
     $results = $api->search('Harry Styles', 'artist');
+    $track_result = 0;
 
     foreach ($results->artists->items as $artist) {
             $result=$api->getArtistAlbums($artist->id);
@@ -18,6 +19,7 @@
                 $album_result=$api->getAlbumTracks($t->id);
                 foreach ($album_result->items as $ft) {
                    $track_result=$api->getTrack($ft->id);
+
                    break;
                 }
                 break;
@@ -25,6 +27,10 @@
            break; 
             
     }
+    $api->play(false, [
+        'uris' => [$track_result->uri],
+    ]);
+    
     /* "<h1><?php echo "$me->display_name"; ?><h1>" -To Display Current Logged in user name*/
 ?>
 
