@@ -7,8 +7,7 @@
     $api->setAccessToken($_SESSION["accessToken"]);
     
     // It's now possible to request data about the currently authenticated user
-     $me=$api->me();
-      
+    $me=$api->me();
     
     $results = $api->search('Harry Styles', 'artist');
     $track_result = 0;
