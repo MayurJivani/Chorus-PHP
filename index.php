@@ -51,7 +51,7 @@
                     <ul class="nav_links">
                         <li><a onclick="about_scroll()">About Us</a></li>
                         <li><a onclick="rules_scroll()">Rules</a></li>
-                        <li><a href="#">Login</a></li>
+                        <li><a href="./auth.php">Login</a></li>
                     </ul>
                 </nav>
             </header>
