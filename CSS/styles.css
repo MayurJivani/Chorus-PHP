@@ -1,6 +1,18 @@
+
 *{
     box-sizing: border-box;
 }
+
+html{
+    scroll-behavior: smooth;
+}
+
+*:before,*:after{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
 
 :root {
     --soft-blue: hsl(215, 51%, 70%);
@@ -12,30 +24,123 @@
     --card-bg: hsl(216, 50%, 16%);
     --line: hsl(215, 32%, 27%);
     --white: hsl(0, 0%, 100%);
+    --primary-color: #da7c3d;
+    --secondary-color: #933b88;
+    --tertiary-color: #443cac;
   }
 
 body{
     margin:0;
-    padding: 30px 5%;
+    padding: 30px 0;
     width: 100%;
     min-height: 100vh;
-    background-color: white;
+    background: linear-gradient(170deg,#222,#000 90%);
+}
+
+h2{
+    font-family: 'Outfit', sans-serif;
+    text-align: center;
+    font-weight: 100;
+    font-size: 2.5rem;
+}
+
+
+/*Scroll to Top Button*/
+
+
+.scroll_btn{  
+    display:none;
+    position: fixed;
+    border-radius: 100%;
+    font-size: 1rem;
+    color: white;
+    background-color: rgba(255,255,255,0.05);
+    box-shadow: 0 0 10px rgba(0,0,0,0.4);
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    opacity: 0;
+    
+}
+
+.scroll_btn:hover{
+    transform: scale(1.1);
+    background-color: rgba(255,255,255,0.1);
+}
+
+.scroll_btn.is-visible{
+    display: inline-block;
+    position: fixed;
+    bottom: 90px;
+    right:50px;
+    width:50px;
+    height: 50px;
+    opacity: 1;
+    transition: all 0.5s ease; 
+}
+
+
+
+/* Reveal */
+.reveal{
+    position:relative;
+    transform: translateY(150px);
+    opacity: 0;
+    transition: all 1s ease;
+}
+
+.reveal.active{
+    transform: translateY(0px);
+    opacity: 1;
+}
+
+.reveal_btn{
+    position:relative;
+    transform: translateY(0px);
+    opacity: 0;
+    
+}
+
+.reveal_btn.active{
+    transform: translateY(150px);
+    opacity: 1;
+    
+}
+
+.landing_page{
+    padding: 0 5%;
 }
 
 /* Navigation Bar */
 .logo{
-    font-family: 'Happy Monkey', cursive;
+    /* font-family: 'Happy Monkey', cursive; */
+    font-family: 'Red Hat Display', sans-serif;
     font-size: 3rem;
-    font-weight: 900;
+    font-weight: 500;
     letter-spacing: 0.5px;
-    color: black;
+    /* color: rgba(255,255,255,0.8); */
+    color:white;
     cursor: pointer;
     margin-right: auto;
+    text-decoration: none;
+    transition: all 1s ease;
+    letter-spacing: 1.5px;
+}
+
+.logo:hover{
+    transform: scale(1.1);
+
+}
+
+.logo:hover i{
+    transform: rotateZ(450deg);
 }
 
 .vinyl{ 
-    color:black;
+    /* color:rgba(255,255,255,0.8); */
+    color:white;
     margin: 0 3px;
+    transition: all 1s ease;
 }
 
 
@@ -47,84 +152,132 @@ header{
     
 }
 
+
+
 .nav_links{
     list-style:none;
+   
 }
 
-.nav_links li,a{
+.nav_links li, .nav_links a{
     font-family: 'Montserrat', sans-serif;
     font-weight: 500;
     font-size: 1rem;
-    color: black;
+    color: #fff;
     text-decoration: none;
+    cursor: pointer;
 }
 
 .nav_links li{
      display: inline-block;
-     padding: 0 20px;
+     position: relative;
+     margin: 0 20px;
+     padding: 0 0 5px 0;
 }
 
 .nav_links li a{
     transition: all 0.3s ease 0s;
+    color: #fff;
 }
 
 .nav_links li a:hover{
     transition: all 0.3s ease 0s;
-    color: black;
 }
+
+.nav_links li:before{
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    right:0;
+    bottom:0;
+    background-color:black;
+    transition: width 0.5s ease-out;
+    background-image: linear-gradient(to right, var(--secondary-color), var(--tertiary-color));
+}
+
+.nav_links li:hover::before{
+    width: 100%;
+    left:0;
+    right: auto;
+}
+
+
 
 /* introduction */
 
+
 .introduction{
-    text-align: center;
+    margin:0 auto;
+    text-align: left;
+    
+}
+
+.back-img{
+    position: absolute;
+    right: 0;
+    top:0;
+    z-index: -1;
+    width: 50%;
 }
 
 .intro-text{
     font-family: 'Red Hat Display', sans-serif;
-    font-size: 4rem;
-    width: 60%;
-    margin: 15% auto 5% auto;
-    color:black;
+    font-size: 5rem;
+    font-weight: 700;
+    width: 50%;
+    margin: 15% 0 5% 0;
+    background-image: radial-gradient(circle at 30% 85%,var(--primary-color) 0,var(--secondary-color) 35%,var(--tertiary-color) 55%);
+    -webkit-background-clip: text;
+    color: transparent;
 }
 
 .btn {
     font-family: 'Red Hat Display', sans-serif;
-    border-radius: 50px;
+    border-radius: 16px;
     font-weight: 500;
     width:20%;
-    margin:0 auto 20% auto;
-    color: #ffffff;
-    font-size: 16px;
-    background: hsl(216, 50%, 16%);
+    margin:0 auto 17.5% auto;
+    color: black;
+    font-size: 1rem;
+    background-color: white;
     padding:15px 0;
     text-decoration: none;
     letter-spacing: 1px;
     border-width: 0.5px;
+    transition: all 0.5s ease 0s;
+    
 }
   
 .btn:hover {
-    background:black;
+    background-color: rgba(255,255,255,0.7);
+    color: black;
     text-decoration: none;
+    cursor: pointer;
 }
 
 
-.about_heading{
+.about_game_heading{
     font-family: 'Outfit', sans-serif;
     text-align: center;
     font-weight: 100;
+    font-size: 1.75rem;
+    color: #fff;
 }
+
+
+
 /* Flipping Cards */
 .container{
     display: flex;
     justify-content: center;
-
+    
 }
 
 .card{
-    margin:100px 25px;
+    margin:50px 25px 100px;
     width:400px;
     height:400px;
-    
 }
 
 .card_inner{
@@ -133,9 +286,10 @@ header{
     transition:transform 1s;
     transform-style:preserve-3d;
     position:relative;
+    transition: all 1.25s ease 0s;
 }
 
-.card_inner.is-flipped{
+.card_inner:hover{
     transform: rotateY(180deg);
 }
 
@@ -146,12 +300,11 @@ header{
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
     overflow: hidden;
-    background-color: hsl(216, 50%, 16%);
+    background: rgba(255,255,255,0.05);
     border-radius: 16px;
-    box-shadow: 0px 3px 18px 3px rgba(0,0,0,0.2);
+    box-shadow: 0px 3px 18px 3px rgba(0,0,0,0.0.15);
     text-align: center;
     cursor: pointer;
-
 }
 
 .fav-artist-img{
@@ -160,10 +313,12 @@ header{
     border-radius: 16px 16px 0 0;
 }
 
+
 .fav-artist-title{
     margin:20px auto;
     font-family: 'Montserrat', sans-serif;
     color: #ffffff;
+    font-size: 1rem;
 }
 
 .card_face--back{
@@ -178,6 +333,7 @@ header{
     line-height: 1.5;
     font-family: 'Montserrat', sans-serif;
     color: #ffffff;
+    font-size: 1rem;
 }
 
 
@@ -185,12 +341,14 @@ header{
     width: 400px;
     height: 325px;
     border-radius: 16px 16px 0 0;
+    
 }
 
 .bb-hot100-title{
     margin: 20px auto;
     font-family: 'Montserrat', sans-serif;
     color: #ffffff;
+    font-size: 1rem;
 }
   
 .bb-hot100-desc{
@@ -198,5 +356,226 @@ header{
     line-height: 1.5;
     font-family: 'Montserrat', sans-serif;
     color: #ffffff; 
+    font-size: 1rem;
+}
+
+
+/* Rules */
+#rules{
+    background-color: rgba(255,255,255,0.05);
+    padding: 100px 0 100px 0;
+}
+
+.rule_heading{
+    font-family: 'Outfit', sans-serif;
+    text-align: center;
+    font-weight: 100;
+    font-size: 2.5rem;
+    padding: 0 0 50px 0;
+    color: white;
+}
+
+.rule{
+    width: 70%;
+    margin: 0 auto;
+    text-align: left;
+
+}
+
+.rule-list{
+    list-style:none;
+    position: relative;
+    width:90%;
+    margin:0px auto 5%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.rule-list li{
+    display: flex;
+    background: #09090a;
+    padding:10px 20px;
+    margin: 5px 0;
+    transition: 0.5s;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 1rem;
+    color:  rgba(255,255,255,0.7);
+    text-decoration: none;
+    align-items: center;
+    line-height: 1.5;
+    border-radius: 16px;
+}
+
+.rule-list li:nth-child(1)
+{
+    background: rgba(255,255,255,0.12);
+}
+.rule-list li:nth-child(2)
+{
+    background: rgba(255,255,255,0.1);
+}
+.rule-list li:nth-child(3)
+{
+    background: rgba(255,255,255,0.07);
+}
+.rule-list li:nth-child(4)
+{
+    background: rgba(255,255,255,0.05);
+}
+.rule-list li:nth-child(5)
+{
+    background: rgba(255,255,255,0.02);
+}
+
+.rule-list li span:nth-child(1)
+{
+    width:10%;
+}
+
+.rule-list li span:nth-child(2)
+{
+    width:80%;
+}
+
+.rule-list li:hover{
+    transform: scale(1.06);
+    background-color:black;
+}
+
+.spotify{
+    padding: 0 5px;
+    font-weight: bold;
+}
+
+.icon{
+    padding:10px 10px;
+    font-size: 1.25rem;
+}
+
+/*About*/
+.about_us{
+    width: 80%;
+    margin: 10% auto;
+}
+
+.about_heading{
+    padding: 0 0 10% 0;
+    color: white;
+}
+
+.dev-container{
+    display: flex;
+    justify-content: space-around;
+}
+
+.album-cover{
+    position: relative;
+    width: 300px;
+    height: 300px;
+    transition: all 2s ease;
+    z-index: -2;
+    box-shadow: 0px 12px 20px -10px rgba(0,0,0,0.7) ;
+    cursor: pointer;
+    border-radius: 2px;
+} 
+
+.ritwik-img{
+    width: 100%;
+    height: 100%;
+}
+
+.mayur-img{
+    width: 100%;
+    height: 100%;
+}
+
+.vinyl-img{
+    width: 161px;
+    height: 300px;
+    position: absolute;
+    top:0;
+    left:170px;
+    z-index: -1;
+    transition: all 1s ease;
+}
+
+
+.album-cover:hover{
+    box-shadow: 5px 12px 20px -10px rgba(0,0,0,0.7) ;
     
 }
+
+.album-cover:hover > .vinyl-img{
+    transform: translateX(130px);
+    box-shadow: -100px 7px 20px -10px rgba(0,0,0,0.5) ;
+}
+
+.album-cover>a{
+    color: #E4DCD1;
+    position: absolute;
+    font-size: 1.5rem;
+    border: 2px solid white;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 50px;
+    width: 50px;
+    height: 50px;
+    transition: all 1s ease;
+    z-index: -1;
+    opacity: 0.2;
+}
+
+.album-cover :nth-child(3)
+{
+    top:40px;
+    left:200px;
+}
+
+.album-cover :nth-child(4)
+{
+    top:120px;
+    left:250px;
+}
+
+.album-cover :nth-child(5)
+{
+    bottom:40px;
+    left:200px;
+}
+
+.album-cover:hover > a {
+    opacity: 0.2;
+    transform: translateX(130px);
+}
+
+.album-cover:hover > a:hover {
+    opacity: 1;
+}
+
+.album-cover p{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 1.5rem;
+    text-align: center;
+    color: white;
+}
+
+
+/* Footer */
+.footer .hr{
+    width: 100%;
+    background-color:rgba(255,255,255,0.7);
+    height: 1px;    
+    margin: 0px 0 40px 0;
+}
+
+.footer{
+    margin: 20% 0 0 0;
+    font-family: 'Montserrat', sans-serif;
+    color: rgba(255,255,255,0.7);
+    font-size: 1rem;
+    text-align: center;
+}
+
+
