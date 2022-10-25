@@ -16,6 +16,8 @@
     
     <script>
         deviceID = 0;
+        isPlay = true;
+        isFirst = true;
 
         window.onSpotifyWebPlaybackSDKReady = () => {
             const token = '<?php echo $_SESSION["accessToken"]; ?>';
@@ -51,7 +53,17 @@
 
             document.getElementById('togglePlay').onclick = function() {
               player.togglePlay();
-              $.ajax({url:"app.php"})
+
+              if(isPlay && isFirst){
+                $.ajax({url:"app.php?mode=play&init=true"})
+              }else if(isPlay){
+                $.ajax({url:"app.php?mode=play"})
+              }else{
+                $.ajax({url:"app.php?mode=pause"})
+              }
+
+              isPlay = !isPlay;
+              isFirst = false;
               
             };
 
