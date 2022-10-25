@@ -27,6 +27,7 @@
            break; 
             
     }
+    
     $api->play(false, [
         'uris' => [$track_result->uri],
     ]);
