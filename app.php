@@ -27,11 +27,13 @@
             
     }
     $a=$api->getMyDevices();
+
     foreach($a->devices as $Did){
         $pdevice=$Did->id;
         break;
     }
-    $api->play($pdevice, [
+
+    $api->play($_COOKIE["deviceID"], [
         'uris' => [$track_result->uri],
     ]);
     

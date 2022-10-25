@@ -5,13 +5,17 @@
 <html>
 <head>
     <title>Spotify Web Playback SDK Quick Start</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.1.3/axios.min.js"></script>
 </head>
 <body>
     <h1>Spotify Web Playback SDK Quick Start</h1>
     <button id="togglePlay">Toggle Play</button>
 
     <script src="https://sdk.scdn.co/spotify-player.js"></script>
+    
     <script>
+        deviceID = 0;
+
         window.onSpotifyWebPlaybackSDKReady = () => {
             const token = '<?php echo $_SESSION["accessToken"]; ?>';
             const player = new Spotify.Player({
@@ -23,7 +27,8 @@
             // Ready
             player.addListener('ready', ({ device_id }) => {
                 console.log('Ready with Device ID', device_id);
-                
+                deviceID = device_id;
+                document.cookie = "deviceID=" + deviceID + ";";
             });
             
             // Not Ready
