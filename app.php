@@ -10,7 +10,7 @@
     
     // It's now possible to request data about the currently authenticated user
     $me=$api->me();
-        $results = $api->search('Zayn Malik', 'artist');
+        $results = $api->search('charlie puth', 'artist');
         $track_result = 0;
 
         foreach ($results->artists->items as $artist) {

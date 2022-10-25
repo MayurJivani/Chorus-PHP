@@ -15,6 +15,6 @@
     $refreshToken = $session->getRefreshToken();
     $_SESSION["accessToken"]=$accessToken;
     $_SESSION["refreshToken"]=$refreshToken;
-    header('Location: app.php');
+    header('Location: playback.php');
     die();
 ?>
