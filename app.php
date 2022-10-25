@@ -26,10 +26,16 @@
            break; 
             
     }
-    $api->play(false, [
+    $a=$api->getMyDevices();
+    foreach($a->devices as $Did){
+        $pdevice=$Did->id;
+        break;
+    }
+    $api->play($pdevice, [
         'uris' => [$track_result->uri],
     ]);
     
+
     /* "<h1><?php echo "$me->display_name"; ?><h1>" -To Display Current Logged in user name*/
 ?>
 
