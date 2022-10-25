@@ -23,7 +23,6 @@
             // Ready
             player.addListener('ready', ({ device_id }) => {
                 console.log('Ready with Device ID', device_id);
-                var did = device_id;
                 
             });
             
