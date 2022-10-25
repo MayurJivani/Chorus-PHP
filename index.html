@@ -14,10 +14,17 @@
                 volume: 0.5
             })
 
+            console.log("Player ready!")
+
+            document.getElementById('togglePlay').onclick = function() {
+              player.togglePlay();
+            };
+
             player.connect();
 
-            console.log("Player ready!")
+            
         };
     </script>
+    <button id="togglePlay">PLay</button>
   </body>
 </html>
