@@ -8,7 +8,7 @@
     <title>Chorus- The music guessing game</title>
 
     <!-- Favion -->
-    <link rel="icon" type="image/x-icon" href="./Images/unknown.ico">
+    <link rel="icon" type="image/x-icon" href="./Images/favicon.ico">
 
     <!-- Font Awesome CDN  -->
     <script src="https://kit.fontawesome.com/fddf746e6f.js" crossorigin="anonymous"></script>
