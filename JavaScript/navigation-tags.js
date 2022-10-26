@@ -1,3 +1,7 @@
+function top_scroll() {
+    window.scrollTo(0,10);
+}
+
 function about_scroll() {
     const element = document.getElementById('about');
     let rect = element.getBoundingClientRect();
@@ -9,7 +13,7 @@ function about_scroll() {
 function rules_scroll() {
     const element = document.getElementById('rules');
     let rect = element.getBoundingClientRect();
-    var pos=rect.y-200;
+    var pos=rect.y-100;
     console.log(pos);
     window.scrollTo(0,pos);
 }

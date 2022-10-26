@@ -8,13 +8,13 @@
     <title>Chorus- The music guessing game</title>
 
     <!-- Favion -->
-    <link rel="icon" type="image/x-icon" href="./Images/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="./Images/unknown.ico">
 
     <!-- Font Awesome CDN  -->
     <script src="https://kit.fontawesome.com/fddf746e6f.js" crossorigin="anonymous"></script>
 
     <!-- CSS sheet link -->
-    <link rel="stylesheet" href="./CSS/styles.css">
+    <link rel="stylesheet" href="./CSS/styles2.css">
     <link rel="stylesheet" href="./CSS/fade.css">
 
     <!-- Google Fonts -->
@@ -39,14 +39,14 @@
         }
     </script>
 
-    <button class="reveal_btn scroll_btn">
+    <div class="scroll_btn" onclick="scrollToTop()">
         <i class="up-arrow fa-solid fa-arrow-up"></i>
-    </button>
+    </div>
 
     <section id="home_page">
         <div class="landing_page">
             <header>
-                <a class="logo" href="#home_page"><span>Ch<i class="vinyl fa-solid fa-compact-disc"></i>rus</span></a>
+                <a class="logo" onclick="top_scroll()"><span>Ch<i class="vinyl fa-solid fa-compact-disc"></i>rus</span></a>
                 <nav>
                     <ul class="nav_links">
                         <li><a onclick="about_scroll()">About Us</a></li>
@@ -58,7 +58,13 @@
             <div class="introduction">
                 <div>
                     <p class="intro-text">Guess your favourite music!</p>
-                    <button class="btn" type="button" name="button">Play Now</button>
+                    <button class="btn" type="button" name="button">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        Play Now
+                    </button>
                 </div>
                 <img class="back-img" src="./Images/background.png" alt="background">
 
@@ -103,7 +109,7 @@
     </section>
     <section class="reveal" id="rules">
         <div class="rule">
-            <h2 class="rule_heading">How to play?</h2>
+            <h2 class="reveal rule_heading">How to play?</h2>
             <ul class="reveal rule-list">
                 <li>
                     <span class="fa-icon"><i class="icon fa-solid fa-user"></i></span>
@@ -130,7 +136,7 @@
     </section>
 
     <section class="reveal" id="about">
-        <div class="reveal about_us">
+        <div class="about_us">
             <h2 class="about_heading">Meet the Developers</h2>
             <div class="reveal dev-container">
                 <div class="album-cover">
@@ -164,7 +170,7 @@
     <!-- Script link -->
     <script src="fade.js"></script>
     <script src="./JavaScript/reveal.js"></script>
-    <script src="./JavaScript/progress.js"></script>
+    <script src="./JavaScript/scrollbtn.js"></script>
     <script src="./JavaScript/navigation-tags.js"></script>
 
 </body>
