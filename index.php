@@ -14,7 +14,7 @@
     <script src="https://kit.fontawesome.com/fddf746e6f.js" crossorigin="anonymous"></script>
 
     <!-- CSS sheet link -->
-    <link rel="stylesheet" href="./CSS/styles2.css">
+    <link rel="stylesheet" href="./CSS/styles.css">
     <link rel="stylesheet" href="./CSS/fade.css">
 
     <!-- Google Fonts -->
