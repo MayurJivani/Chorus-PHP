@@ -58,6 +58,7 @@
             <div class="introduction">
                 <div>
                     <p class="intro-text">Guess your favourite music!</p>
+                    <a href="./auth.php">
                     <button class="btn" type="button" name="button">
                         <span></span>
                         <span></span>
@@ -65,6 +66,7 @@
                         <span></span>
                         Play Now
                     </button>
+                    </a>
                 </div>
                 <img class="back-img" src="./Images/background.png" alt="background">
 
