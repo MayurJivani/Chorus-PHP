@@ -58,16 +58,21 @@
     }
 
     function search_artist($query){
+        $options = array("limit"=>5);
         require 'vendor/autoload.php';
         $api = new SpotifyWebAPI\SpotifyWebAPI();
         session_start();
         $api->setAccessToken($_SESSION["accessToken"]);
-        $results = $api->search('{$query}%', 'artist');
+        $results = $api->search($query, 'artist', $options);
         foreach ($results->artists->items as $artist) {
             $artist_id=$artist->id;
             $artist_name=$artist->name;
-            $artist_pfp=$artist->images->url;
+            foreach($artist->images as $pfp){
+                $artist_pfp=$pfp->url;
+                break;
+            }
             echo "Id: ".$artist_id." Name: ".$artist_name." Image: ".$artist_pfp;
+            echo "<br>";
         }
 
     }
@@ -77,9 +82,9 @@
         resume_playback();
     }else if($_GET["mode"] == "pause"){
         stop_playback();
-    }*/if(isset($_POST['input'])){
-        $input = $_POST['input'];
-        echo "<h1>".$input."</h1>";
+    }*/if(isset($_POST['name'])){
+        $input = $_POST['name'];
+        search_artist($input);
     }
     
 ?>
