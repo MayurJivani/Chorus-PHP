@@ -1,18 +1,13 @@
 <?php
     function start_playback(){
+
     require 'vendor/autoload.php';
-    
     $api = new SpotifyWebAPI\SpotifyWebAPI();
     session_start();
-
-    // Fetch the saved access token from somewhere. A session for example.
     $api->setAccessToken($_SESSION["accessToken"]);
     
-    // It's now possible to request data about the currently authenticated user
     $me=$api->me();
         $results = $api->search('charlie puth', 'artist');
-        $track_result = 0;
-
         foreach ($results->artists->items as $artist) {
                 $result=$api->getArtistAlbums($artist->id);
                 foreach ($result->items as $t) {
@@ -62,11 +57,34 @@
         ]);
     }
 
-    if($_GET["mode"] == "play" && $_GET["init"] == "true"){
+    function search_artist($query){
+        $options = array("limit"=>5);
+        require 'vendor/autoload.php';
+        $api = new SpotifyWebAPI\SpotifyWebAPI();
+        session_start();
+        $api->setAccessToken($_SESSION["accessToken"]);
+        $results = $api->search($query, 'artist', $options);
+        foreach ($results->artists->items as $artist) {
+            $artist_id=$artist->id;
+            $artist_name=$artist->name;
+            foreach($artist->images as $pfp){
+                $artist_pfp=$pfp->url;
+                break;
+            }
+            echo "Id: ".$artist_id." Name: ".$artist_name." Image: ".$artist_pfp;
+            echo "<br>";
+        }
+
+    }
+    /*if($_GET["mode"] == "play" && $_GET["init"] == "true"){
         start_playback();
     }else if($_GET["mode"] == "play"){
         resume_playback();
     }else if($_GET["mode"] == "pause"){
         stop_playback();
+    }*/if(isset($_POST['name'])){
+        $input = $_POST['name'];
+        search_artist($input);
     }
+    
 ?>
