@@ -1,12 +1,10 @@
 <?php
     function start_playback(){
-
     require 'vendor/autoload.php';
     $api = new SpotifyWebAPI\SpotifyWebAPI();
     session_start();
     $api->setAccessToken($_SESSION["accessToken"]);
     
-    $me=$api->me();
         $results = $api->search('charlie puth', 'artist');
         foreach ($results->artists->items as $artist) {
                 $result=$api->getArtistAlbums($artist->id);

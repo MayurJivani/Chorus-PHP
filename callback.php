@@ -15,6 +15,10 @@
     $refreshToken = $session->getRefreshToken();
     $_SESSION["accessToken"]=$accessToken;
     $_SESSION["refreshToken"]=$refreshToken;
-    header('Location: playback.php');
+    $api = new SpotifyWebAPI\SpotifyWebAPI();
+    $api->setAccessToken($accessToken);
+    $me=$api->me();
+    $_SESSION["name"]=$me->display_name;
+    header('Location: selectMode.php');
     die();
 ?>

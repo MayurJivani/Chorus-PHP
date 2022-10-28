@@ -1,6 +1,8 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -39,7 +41,7 @@
         }
     </script>
     <div class="headings">
-        <h2>Hey User!</h2>
+        <?php echo "<h2>Hey, ".$_SESSION['name']."👋</h2>" ?>
         <h3>Choose a Game Mode</h3>
     </div>
     <div class="container">
@@ -67,3 +69,4 @@
 
     <script src="./JavaScript/cardHoverEffect.js"></script>
 </body>
+</html>
