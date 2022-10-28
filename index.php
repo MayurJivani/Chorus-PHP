@@ -7,14 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chorus- The music guessing game</title>
 
-    <!-- Favion -->
+    <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="./Images/favicon.ico">
 
     <!-- Font Awesome CDN  -->
     <script src="https://kit.fontawesome.com/fddf746e6f.js" crossorigin="anonymous"></script>
 
     <!-- CSS sheet link -->
-    <link rel="stylesheet" href="./CSS/styles.css">
+    <link rel="stylesheet" href="./CSS/indexPage.css">
     <link rel="stylesheet" href="./CSS/fade.css">
 
     <!-- Google Fonts -->
