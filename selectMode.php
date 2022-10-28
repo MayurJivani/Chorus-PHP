@@ -1,8 +1,9 @@
 <?php
-    session_start();
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -41,7 +42,7 @@
         }
     </script>
     <div class="headings">
-        <?php echo "<h2>Hey, ".$_SESSION['name']."👋</h2>" ?>
+        <?php echo "<h2>Hey, " . $_SESSION['name'] . "👋</h2>" ?>
         <h3>Choose a Game Mode</h3>
     </div>
     <div class="container">
@@ -50,14 +51,13 @@
                 <img src="./Images/fav-artist.jpg" alt="" srcset="">
             </div>
             <p>Play by Searching your Favourite Artists</p>
-            <form class="search-bar" action="">
-                <input type="text" placeholder="Search Now">
-                <button type="sumbit"><img src="Images/search.png" alt="" srcset=""></button>
-            </form>
+            <div class="search-bar">
+                <button type="sumbit">Search Now</button>
+            </div>
         </div>
         <div class="card-2">
             <div class="bb-top100">
-                <img src="./Images/bb100.jpg" alt="" srcset="">
+                <img src="./Images/bb100-img.png" alt="" srcset="">
             </div>
             <p>Guess songs on the Billboard Top 100</p>
             <div class="play-button">
@@ -69,4 +69,5 @@
 
     <script src="./JavaScript/cardHoverEffect.js"></script>
 </body>
+
 </html>

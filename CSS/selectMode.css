@@ -82,9 +82,25 @@ p {
     align-items: center;
     justify-content: center;
     position: relative;
+    transition: transform 0.5s ease;
 }
 
-.card-1:before,
+.card-1:before{
+    content: '';
+    position: absolute;
+    left: var(--x);
+    top: var(--y);
+    transform: translate(-50%, -50%);
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background-image: linear-gradient(to top, #56B4D3, #348F50);
+    z-index: 1;
+    transition: width 0.75s cubic-bezier(.39, .575, .565, 1), height 0.75s cubic-bezier(.39, .575, .565, 1);
+    opacity: 0.85;
+}
+
+
 .card-2::before {
     content: '';
     position: absolute;
@@ -94,9 +110,9 @@ p {
     width: 0;
     height: 0;
     border-radius: 50%;
-    background-image: linear-gradient(to bottom, #EECDA3, #EF629F);
+    background-image: linear-gradient(to top, #EF629F, #003973);
     z-index: 1;
-    transition: width 0.75s cubic-bezier(.39, .575, .565, 1), height 0.75s cubic-bezier(.39, .575, .565, 1);
+    transition: width 0.75s cubic-bezier(.39, .575, .565, 1), height 0.75s cubic-bezier(.39, .575, .565, 1), transform 0.5s ease;
     opacity: 0.85;
 }
 
@@ -104,14 +120,14 @@ p {
 .card-2:hover::before {
     width: 250%;
     height: 250%;
+}
 
+.card-1:hover, .card-2:hover{
+    transform: scale(1.03);
 }
 
 .card-1:hover> .search-bar{
     background: rgba(0,0,0,0.9);
-}
-.card-1:hover> .search-bar button{
-    background-color: rgba(255,255,255,0.2);
 }
 
 .card-1:hover>p{
@@ -129,8 +145,8 @@ input:focus::placeholder{
 
 
 .fav-artist img {
-    max-width: 100%;
-    max-width: 100%;
+    aspect-ratio: 1.07/1;
+    width:max(100%, 400px);
     filter: grayscale(1);
 }
 
@@ -139,12 +155,45 @@ input:focus::placeholder{
 }
 
 .bb-top100 img {
-    max-width: 100%;
-    max-width: 100%;
+    aspect-ratio: 1.07/1;
+    width:max(100%, 400px);
     filter: grayscale(1);
+    object-fit: cover;
 }
 
 .search-bar{
+    width: 50%;
+    z-index: 5;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 85%;
+    bottom: 0;
+    margin: 0 auto 30px;
+    background: rgba(255,255,255,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 60px;
+    padding:10px 10px;
+    transition: all 1s ease;
+}
+
+.search-bar button{
+    background: transparent;
+    border: 0;
+    flex:1;
+    outline:none;
+    font-size: 1rem;
+    color: white;
+    padding-left: 20px;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    color:white;
+    cursor: pointer;
+}
+
+/* .search-bar{
     width: 50%;
     z-index: 5;
     position: absolute;
@@ -193,7 +242,7 @@ input:focus::placeholder{
     background: rgba(255,255,255,0.5);
     transition: all 1s ease;
     cursor: pointer;
-}
+} */
 
 .play-button{
     width: 50%;
