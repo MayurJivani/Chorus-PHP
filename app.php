@@ -65,11 +65,13 @@
         foreach ($results->artists->items as $artist) {
             $artist_id=$artist->id;
             $artist_name=$artist->name;
+            $artist_popularity=$artist->popularity;
+            $artist_spotify=$artist->external_urls->spotify;
             foreach($artist->images as $pfp){
                 $artist_pfp=$pfp->url;
                 break;
             }
-            echo "Id: ".$artist_id." Name: ".$artist_name." Image: ".$artist_pfp;
+            echo "Id: ".$artist_id." Name: ".$artist_name." Image: ".$artist_pfp." Popularity: ".$artist_popularity." Spotify: ".$artist_spotify;
             echo "<br>";
         }
 
