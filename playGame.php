@@ -161,7 +161,7 @@
                 </li>
             </ul>
         </div>
-        <button data-close-button class="rules-close-btn">Play</button>
+        <button data-close-button class="close-btn">Play</button>
     </div>
     <div id="overlay"></div>
 
@@ -191,6 +191,7 @@
                     <div class="stat-heading">Max Streak</div>
                 </div>
             </div>
+            <button data-close-button class="close-btn">Back</button>
         </div>
 
 

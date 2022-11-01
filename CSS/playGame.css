@@ -390,8 +390,6 @@ input:focus::placeholder{
 }
 
 /* How to Play Pop-up */
-
-
 .how-to-play-modal{
     position: fixed;
     top:55%;
@@ -501,7 +499,7 @@ input:focus::placeholder{
     font-size: 1rem;
 }
 
-.how-to-play-modal>button{
+.close-btn{
     background-color: #340030;
     display: block;
     width: 40%;
@@ -518,7 +516,7 @@ input:focus::placeholder{
     transition: transform 0.5s ease, box-shadow 0.5s ease;
 }
 
-.how-to-play-modal>button:hover{
+.close-btn:hover{
     transform: scale(1.06);
     box-shadow: 0px 0px 10px 5px rgba(0 0 0 /0.2);
 }
@@ -554,4 +552,9 @@ input:focus::placeholder{
     border: 0;
     box-shadow: 0 0 1em rgba(24,24,24,0.5); 
     z-index: 10;
+}
+
+.stats-modal.active{
+    transform: translate(-50%,-50%) scale(1);
+    opacity: 1;
 }
