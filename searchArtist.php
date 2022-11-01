@@ -15,7 +15,16 @@
 <script type="text/javascript">
   $(document).ready(function(){
     var limit=0;
-    $("#search").keypress(function(){
+    var textBox=document.getElementById("search");
+    textBox.addEventListener("keypress", function(event) {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        ajaxSearch();
+      }
+      
+    });
+  });
+  function ajaxSearch(){
         if(limit>0){
             $.ajax({
                 type:'POST',
@@ -29,8 +38,7 @@
             });
         }
         limit++;
-    });
-  });
+    }
 </script>
 
 </body>
