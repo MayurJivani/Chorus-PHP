@@ -25,7 +25,6 @@
 </head>
 
 <body>
-<<<<<<< Updated upstream:searchArtist.php
   <h1>Live Search</h1>
         <input type="text" id="search">
         <table class="table table-hover">
@@ -45,7 +44,7 @@
     });
   });
   function ajaxSearch(){
-        if(limit>0){
+        // if(limit>0){
             $.ajax({
                 type:'POST',
                 url:'./app.php',
@@ -56,39 +55,10 @@
                 $("#output").html(data);
                 }
             });
-        }
+        // }
         limit++;
     }
 </script>
-=======
-  <h2>Live Search</h2>
-  <input type="text" id="search">
-  <table class="table table-hover">
-    <tbody id="output">
-    </tbody>
-  </table>
-
-  <script type="text/javascript">
-    $(document).ready(function() {
-      var limit = 0;
-      $("#search").keypress(function() {
-        if (limit > 0) {
-          $.ajax({
-            type: 'POST',
-            url: './app.php',
-            data: {
-              name: $("#search").val(),
-            },
-            success: function(data) {
-              $("#output").html(data);
-            }
-          });
-        }
-        limit++;
-      });
-    });
-  </script>
->>>>>>> Stashed changes:front-test.php
 
 </body>
 
