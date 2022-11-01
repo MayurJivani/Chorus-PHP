@@ -124,8 +124,8 @@ h2{
     text-decoration: none;
     transition: all 1s ease;
     letter-spacing: 1.5px;
-    animation: slide-in-left 1s cubic-bezier(.39,.575,.565,1);
-    animation-delay: 0.25s;
+    animation: slide-in-bottom 1.25s cubic-bezier(.39,.575,.565,1);
+    animation-delay: 0s;
 }
 
 @keyframes slide-in-left {
@@ -178,8 +178,9 @@ header{
     color: #fff;
     text-decoration: none;
     cursor: pointer;
-    animation: slide-in-left 1s cubic-bezier(.39,.575,.565,1) both;
+    animation: slide-in-bottom 1s cubic-bezier(.39,.575,.565,1) forwards;
     animation-delay: 0.25s;
+    opacity: 0;
 }
 
 .nav_links li{

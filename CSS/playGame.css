@@ -1,0 +1,557 @@
+* {
+    box-sizing: border-box;
+
+}
+
+::-webkit-scrollbar {
+    display: none;
+
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+*:before,
+*:after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+:root {
+    --primary-color: #da7c3d;
+    --secondary-color: #933b88;
+    --tertiary-color: #443cac;
+}
+
+body {
+    margin: 0;
+    padding: 15px 5%;
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(170deg, #222, #000 90%);
+    position: relative;
+    /* overflow: hidden; */
+
+}
+
+h2 {
+    font-family: 'Outfit', sans-serif;
+    text-align: center;
+    font-weight: 100;
+    font-size: 2.5rem;
+}
+
+/*Header*/
+@keyframes slide-in-top {
+    0% {
+        opacity: 0;
+        transform: translateY(-3.75rem) translateZ(0);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0) translateZ(0);
+    }
+
+}
+
+.logo {
+
+    font-family: 'Red Hat Display', sans-serif;
+    font-size: 3rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    color: white;
+    cursor: pointer;
+    margin-right: auto;
+    text-decoration: none;
+    transition: all 1s ease;
+    letter-spacing: 1.5px;
+    animation: slide-in-top 1s cubic-bezier(.39, .575, .565, 1);
+    animation-delay: 0.25s;
+}
+
+.logo:hover {
+    transform: scale(1.1);
+}
+
+.logo:hover i {
+    transform: rotateZ(450deg);
+}
+
+.vinyl {
+    color: white;
+    margin: 0 3px;
+    transition: all 1s ease;
+
+}
+
+header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+}
+
+.nav_links {
+    list-style: none;
+}
+
+.nav_links li {
+    display: inline-block;
+    position: relative;
+    margin: 0 30px;
+    padding: 0 0 5px 0;
+    text-decoration: none;
+    animation: slide-in-top 1s cubic-bezier(.39, .575, .565, 1) both;
+    animation-delay: 0.25s;
+}
+
+.nav_links i {
+    font-size: 1.5rem;
+    color: white;
+}
+
+
+.nav_links button {
+    transition: all 0.3s ease 0s;
+    background-color: transparent;
+    cursor: pointer;
+    border: 0;
+    border-radius: 50%;
+    padding: 8px;
+    text-align: center;
+}
+
+.nav_links button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 0 3px var(--secondary-color);
+    
+}
+
+.container{
+    padding: 30px 0;
+    display: flex;
+    gap:100px;
+
+}
+
+/*Vinyl-section*/
+
+.player-container{
+    background-color: #262626;
+    padding: 30px;
+    border-radius: 30px;
+    position: relative;
+    opacity: 0;
+    animation: slide-in-top 1s cubic-bezier(.39, .575, .565, 1) forwards;
+    animation-delay: 1s;
+}
+
+.vinyl-img{
+    width: 25vw;
+    animation: rotate 3s linear infinite;
+    animation-delay: 0.1s;
+}
+
+.guess-input{
+    width: 100%;
+    margin: 20px auto 30px;
+    background: rgba(255,255,255,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16px;
+    padding:15px 10px;
+    transition: all 1s ease;
+}
+
+.guess-input input{
+    background: transparent;
+    border: 0;
+    flex:1;
+    outline:none;
+    font-size: 1rem;
+    color: white;
+    padding-left: 20px;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+}
+
+::placeholder { 
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    color:white;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+input:focus::placeholder{
+    opacity: 0;
+}
+
+.buttons{
+    display: flex;
+    justify-content: space-around;
+    gap:20px;
+}
+.buttons button{
+    background-color: #340030;
+    width: 40%;
+    border: 0;
+    flex:1;
+    outline:none;
+    font-size: 1rem;
+    color: white;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    cursor: pointer;
+    padding:15px 10px;
+    border-radius: 16px;
+    transition: transform 0.5s ease;
+}
+
+.buttons button:hover{
+    transform: scale(1.06);
+}
+
+/* Pause-Play Button */
+#button-toggle{
+    height:3.5rem;
+    width: 3.5rem;
+    position: absolute;
+    z-index: 2;
+    left: 70%;
+    top:55%;
+    background-color: #003973;
+    border: none;
+    border-radius: 50%;
+    outline: none;
+    box-shadow: 0 0 1rem rgba(0 0 0 / 35%);
+    cursor: pointer;
+    transition: transform 0.5s ease;
+}
+
+#button-toggle:hover{
+    transform: scale(1.1);
+}
+
+#button-toggle>i{
+    position: absolute;
+    position: absolute;
+    top: 52%;  /* position the top  edge of the element at the middle of the parent */
+    left: 52%; /* position the left edge of the element at the middle of the parent */
+    transform: translate(-50%, -50%);
+    color:white;
+    font-size: 1.5rem;
+    opacity: 0;
+    transition: opacity .25s ease;
+}
+
+#button-toggle>.play{
+    opacity: 1;
+}
+
+#button-toggle[data-value="true"]>.play{
+    opacity: 0;
+}
+#button-toggle[data-value="true"]>.pause{
+    opacity: 1;
+}
+
+#button-toggle[data-value="false"]>.play{
+    opacity: 1;
+}
+#button-toggle[data-value="false"]>.pause{
+    opacity: 0;
+}
+
+.cd-player[data-value="true"]>.vinyl-img{
+    animation-play-state: running;
+}
+
+.cd-player[data-value="false"]>.vinyl-img{
+    animation-play-state: paused;
+}
+
+@keyframes rotate{
+    0% {
+        transform:rotate(0deg);
+    }
+
+    100% {
+
+        transform:rotate(360deg);
+    }
+}
+
+
+/* Guess */
+.guess-container{
+    flex:1;
+    display: flex;
+    width: 100%;
+    background-color: #262626;
+    border-radius: 30px;
+    position: relative; 
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    animation: slide-in-top 1s cubic-bezier(.39, .575, .565, 1) forwards;
+    animation-delay: 1.5s;
+}
+
+.guess-output{
+    list-style: none;
+    margin: 0 auto;
+    width: 90%;
+    height: 100%;
+    padding: 30px 0;
+    display:flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.guess-output li{
+    width: 100%;
+    display: flex;
+    padding: 25px 20px;
+    margin: 10px 0;
+    position: relative;
+    text-decoration: none;
+    background-color: #262626;
+    border-radius: 16px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.25rem;
+    gap:30px
+}
+
+.guess-output li:nth-child(1)
+{
+    background: rgba(255,255,255,0.12);
+}
+.guess-output li:nth-child(2)
+{
+    background: rgba(255,255,255,0.1);
+}
+.guess-output li:nth-child(3)
+{
+    background: rgba(255,255,255,0.07);
+}
+.guess-output li:nth-child(4)
+{
+    background: rgba(255,255,255,0.05);
+}
+.guess-output li:nth-child(5)
+{
+    background: rgba(255,255,255,0.02);
+}
+.guess-output li:nth-child(6)
+{
+    background: rgba(255,255,255,0.01);
+}
+
+.guess-output li span:nth-child(1)
+{
+    width:10%;
+    position: relative;
+}
+
+.guess-output li span:nth-child(2)
+{
+    width:80%;
+    height: 1.25rem;
+}
+
+.guess-output li i{
+    font-size: 1.5rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    opacity: 0;
+}
+
+.guess-output li .skip{
+    opacity: 0;
+}
+
+.guess-output li .correct{
+    opacity: 1;
+    color: green;
+}
+
+.guess-output li .wrong{
+    opacity: 0;
+    color: red;
+}
+
+/* How to Play Pop-up */
+
+
+.how-to-play-modal{
+    position: fixed;
+    top:55%;
+    left:50%;
+    transform: translate(-50%,-1000px);
+    opacity: 0;
+    transition: all 0.5s cubic-bezier(.39, .575, .565, 1);
+    background-color: rgb(27, 27, 27);
+    max-width: 40%;
+    border-radius: 16px;
+    border: 0;
+    box-shadow: 0 0 1em rgba(24,24,24,0.5); 
+    z-index: 10;
+}
+
+.how-to-play-modal.active{
+    transform: translate(-50%,-50%) scale(1);
+    opacity: 1;
+}
+
+
+.rule_heading{
+    font-family: 'Outfit', sans-serif;
+    text-align: center;
+    font-weight: 100;
+    font-size: 2rem;
+    padding: 0 0 10px 0;
+    color: white;
+}
+
+.rule{
+    width: 90%;
+    margin: 0 auto;
+    text-align: left;
+    padding: 0px 0 0px 0;
+}
+
+.rule-list{
+    list-style:none;
+    position: relative;
+    width:100%;
+    margin:0px auto 5%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.rule-list li{
+    display: flex;
+    background: #09090a;
+    padding:15px 20px;
+    margin: 7px 0;
+    transition: 0.5s;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 0.9rem;
+    color:  rgba(255,255,255,0.8);
+    text-decoration: none;
+    align-items: center;
+    line-height: 1.5;
+    border-radius: 16px;
+}
+
+.rule-list li:nth-child(1)
+{
+    background: rgba(255,255,255,0.12);
+}
+.rule-list li:nth-child(2)
+{
+    background: rgba(255,255,255,0.1);
+}
+.rule-list li:nth-child(3)
+{
+    background: rgba(255,255,255,0.07);
+}
+.rule-list li:nth-child(4)
+{
+    background: rgba(255,255,255,0.05);
+}
+.rule-list li:nth-child(5)
+{
+    background: rgba(255,255,255,0.02);
+}
+
+.rule-list li span:nth-child(1)
+{
+    width:10%;
+}
+
+.rule-list li span:nth-child(2)
+{
+    width:80%;
+}
+
+.rule-list li:hover{
+    transform: scale(1.06);
+    background-color:black;
+    color: white;
+}
+
+.spotify{
+    padding: 0 5px;
+    font-weight: bold;
+}
+
+.rule-list .icon{
+    padding:10px 10px;
+    font-size: 1rem;
+}
+
+.how-to-play-modal>button{
+    background-color: #340030;
+    display: block;
+    width: 40%;
+    border: 0;
+    margin: 30px auto 30px auto;
+    outline:none;
+    font-size: 1rem;
+    color: white;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    cursor: pointer;
+    padding:15px 10px;
+    border-radius: 16px;
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.how-to-play-modal>button:hover{
+    transform: scale(1.06);
+    box-shadow: 0px 0px 10px 5px rgba(0 0 0 /0.2);
+}
+
+#overlay{
+    position: fixed;
+    opacity: 0;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background: rgba(0,0,0,0.9);
+    pointer-events: none;
+    transition: all 0.5s ease;
+}
+
+#overlay.active{
+    opacity: 1;
+    pointer-events: all;
+}
+
+/* Statistics Pop-up */
+.stats-modal{
+    position: fixed;
+    top:55%;
+    left:50%;
+    transform: translate(-50%,-1000px);
+    opacity: 0;
+    transition: all 0.5s cubic-bezier(.39, .575, .565, 1);
+    background-color: rgb(27, 27, 27);
+    max-width: 40%;
+    border-radius: 16px;
+    border: 0;
+    box-shadow: 0 0 1em rgba(24,24,24,0.5); 
+    z-index: 10;
+}

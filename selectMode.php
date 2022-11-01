@@ -66,7 +66,7 @@ session_start();
 
         </div>
     </div>
-
+    <script src="./JavaScript/fade.js"></script>
     <script src="./JavaScript/cardHoverEffect.js"></script>
 </body>
 

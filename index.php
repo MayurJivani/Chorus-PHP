@@ -170,10 +170,10 @@
 
 
     <!-- Script link -->
-    <script src="fade.js"></script>
-    <script src="./JavaScript/reveal.js"></script>
-    <script src="./JavaScript/scrollbtn.js"></script>
-    <script src="./JavaScript/navigation-tags.js"></script>
+    <script src="./JavaScript/fade.js"></script>
+    <script src="./JavaScript/IndexPage/reveal.js"></script>
+    <script src="./JavaScript/IndexPage/scrollbtn.js"></script>
+    <script src="./JavaScript/IndexPage/navigation-tags.js"></script>
 
 </body>
 

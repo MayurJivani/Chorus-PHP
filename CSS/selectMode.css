@@ -135,9 +135,6 @@ p {
     
 }
 
-input:focus::placeholder{
-    opacity: 0;
-}
 
 .fav-artist {
     position: relative;
@@ -272,7 +269,6 @@ input:focus::placeholder{
     padding-left: 20px;
     text-align: center;
     font-family: 'Montserrat', sans-serif;
-    color:white;
     cursor: pointer;
 }
 
