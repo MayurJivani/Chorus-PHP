@@ -75,7 +75,7 @@
             echo "<li>";
             echo "<span class='artist-id'>".$artist_id."</span>";
             echo "<span class='artist-name'>".$artist_name."</span>";
-            echo "<span class='artist-pfp'>".$artist_pfp."</span>";
+            echo "<span class='artist-pfp'>".$artist_pfp."</span><br>";
             echo "<span class='artist-pop'>".$artist_popularity."</span>";
             echo "<span class='artist-url'>"."<a href='$artist_spotify'>link</a>"."</span>";
             //echo "Id: ".$artist_id." Name: ".$artist_name." Image: ".$artist_pfp." Popularity: ".$artist_popularity." Spotify: ".$artist_spotify;

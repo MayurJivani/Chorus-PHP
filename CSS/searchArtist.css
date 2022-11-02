@@ -1,0 +1,123 @@
+*{
+    box-sizing: border-box;
+   
+}
+
+::-webkit-scrollbar{
+    display:none;
+
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+*:before,*:after{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+:root {
+    --primary-color: #da7c3d;
+    --secondary-color: #933b88;
+    --tertiary-color: #443cac;
+  }
+
+body{
+    margin:0;
+    padding: 30px 0;
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(170deg,#222,#000 90%);
+
+}
+
+h2{
+    font-family: 'Outfit', sans-serif;
+    text-align: center;
+    font-weight: 100;
+    font-size: 2.5rem;
+    color:white;
+}
+
+/* Search Bar */
+.search-bar{
+    width: 25%;
+    z-index: 5;
+    margin: 0 auto 30px;
+    background: rgba(255,255,255,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 60px;
+    padding:10px 10px;
+    transition: all 1s ease;
+}
+
+.search-bar input{
+    background: transparent;
+    border: 0;
+    flex:1;
+    outline:none;
+    font-size: 1rem;
+    color: white;
+    padding-left: 20px;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+}
+
+::placeholder { 
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    color:white;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+.search-bar button img{
+    width: 15px;
+    text-align: center;
+}
+
+.search-bar button{
+    border:0;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    background: rgba(255,255,255,0.5);
+    transition: all 1s ease;
+    cursor: pointer;
+}
+
+input:focus::placeholder {
+    opacity: 0;
+}
+
+ul{
+    list-style:none;
+    position: relative;
+    width:90%;
+    margin:0px auto 5%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+ul li{
+    display: flex;
+    background: #09090a;
+    padding:10px 20px;
+    margin: 5px 0;
+    transition: 0.5s;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 1rem;
+    color:  rgba(255,255,255,0.7);
+    text-decoration: none;
+    align-items: center;
+    line-height: 1.5;
+    border-radius: 16px;
+}
+
+

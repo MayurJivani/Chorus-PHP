@@ -16,7 +16,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
   <!-- CSS sheet link -->
-  <link rel="stylesheet" href="./CSS/front-test.css">
+  <link rel="stylesheet" href="./CSS/searchArtist.css">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,40 +25,41 @@
 </head>
 
 <body>
-  <h1>Live Search</h1>
-        <input type="text" id="search">
-        <table class="table table-hover">
-            <tbody id="output"> 
-            </tbody>
-        </table>
-<script type="text/javascript">
-  $(document).ready(function(){
-    var limit=0;
-    var textBox=document.getElementById("search");
-    textBox.addEventListener("keypress", function(event) {
-      if (event.key === "Enter") {
-        event.preventDefault();
-        ajaxSearch();
-      }
-      
+  <h2>Search an Artist</h2>
+  <!-- <form class="search-bar" action="" autocomplete="off"> -->
+    <input type="text" id="search" placeholder="Search Here">
+    <!-- <button onclick="ajaxSearch()"><img src="./Images/search.png" alt="search-icon" srcset=""></button> -->
+  <!-- </form> -->
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      var limit = 0;
+      var textBox = document.getElementById("search");
+      textBox.addEventListener("keypress", function(event) {
+        if (event.key === "Enter") {
+          event.preventDefault();
+          ajaxSearch();
+        }
+
+      });
     });
-  });
-  function ajaxSearch(){
-        // if(limit>0){
-            $.ajax({
-                type:'POST',
-                url:'./app.php',
-                data:{
-                name:$("#search").val(),
-                },
-                success:function(data){
-                $("#output").html(data);
-                }
-            });
-        // }
-        limit++;
+
+    function ajaxSearch() {
+      // if(limit>0){
+      $.ajax({
+        type: 'POST',
+        url: './app.php',
+        data: {
+          name: $("#search").val(),
+        },
+        success: function(data) {
+          $("#output").html(data);
+        }
+      });
+      // }
+      limit++;
     }
-</script>
+  </script>
 
 </body>
 
