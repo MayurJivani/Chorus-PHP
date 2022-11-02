@@ -45,7 +45,6 @@
 
     function ajaxSearch() {
       event.preventDefault();
-      // if(limit>0){
       $.ajax({
         type: 'POST',
         url: './app.php',
@@ -56,7 +55,6 @@
           $("#output").html(data);
         }
       });
-      // }
 
     }
   </script>
