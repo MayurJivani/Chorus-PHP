@@ -26,25 +26,25 @@
 
 <body>
   <h2>Search an Artist</h2>
-  <!-- <form class="search-bar" action="" autocomplete="off"> -->
+  <form class="search-bar" autocomplete="off">
     <input type="text" id="search" placeholder="Search Here">
-    <!-- <button onclick="ajaxSearch()"><img src="./Images/search.png" alt="search-icon" srcset=""></button> -->
-  <!-- </form> -->
+    <button onclick="ajaxSearch()"><img src="./Images/search.png" alt="search-icon" srcset=""></button>
+  </form>
+  <div id="output"></div>
 
   <script type="text/javascript">
     $(document).ready(function() {
-      var limit = 0;
       var textBox = document.getElementById("search");
       textBox.addEventListener("keypress", function(event) {
         if (event.key === "Enter") {
           event.preventDefault();
           ajaxSearch();
         }
-
       });
     });
 
     function ajaxSearch() {
+      event.preventDefault();
       // if(limit>0){
       $.ajax({
         type: 'POST',
@@ -57,7 +57,7 @@
         }
       });
       // }
-      limit++;
+
     }
   </script>
 
