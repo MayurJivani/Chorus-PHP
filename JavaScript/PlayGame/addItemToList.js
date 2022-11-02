@@ -1,21 +1,70 @@
-const addInput=document.querySelector("#addInput");
-const addBtn=document.querySelector("#addBtn");
-const divList=document.querySelector(".guess-container");
-const spanEle=document.querySelector(".fa-icon");
-const liEle=document.querySelector(".guess-output-li");
+const addInput = document.querySelector("#addInput");
+const addBtn = document.querySelector("#addBtn");
+const skipBtn = document.querySelector("#skipBtn");
+const divList = document.querySelector(".guess-container");
+const spanEle = document.querySelector(".fa-icon");
+const liEle = document.querySelector(".guess-output-li");
+const songName = "Hello";
 
+function addLists() {
+    const ul = divList.querySelector('ul');
+    const li = document.createElement('li');
+    const span1 = document.createElement('span');
+    const span2 = document.createElement('span');
+    const i1 = document.createElement('i');
+    const i2 = document.createElement('i');
+    const i3 = document.createElement('i');
+    i1.className = "skip fa-solid fa-forward-step";
+    i2.className = "correct fa-solid fa-circle-check";
+    i3.className = "wrong fa-solid fa-circle-xmark";
+    if (addInput.value === "") {
+        const modal = document.querySelector('#valid-input-modal');
+        modal.showModal();
+        const closeModal = document.querySelector('#valid-input-modal-close-btn');
+        closeModal.addEventListener('click', () => {
+            modal.close();
+        })
+        return;
+    }
+    if (addInput.value.toUpperCase() === songName.toUpperCase()) {
+        i1.style.opacity = 0;
+        i2.style.opacity = 1;
+        i3.style.opacity = 0;
+    }
+    else {
+        i1.style.opacity = 0;
+        i2.style.opacity = 0;
+        i3.style.opacity = 1;
+    }
+    span1.append(i1);
+    span1.append(i2);
+    span1.append(i3);
+    span2.innerHTML = addInput.value;
+    addInput.value = '';
+    li.append(span1);
+    li.append(span2);
+    ul.appendChild(li);
+}
 
-function addLists(){
-    const ul=divList.querySelector('ul');
-    const li=document.createElement('li');
-    li.className="guess-output li";
-    const span1=document.createElement('span');
-    const span2=document.createElement('span');
-    span1.className="guess-output li span:nth-child(1)";
-    span2.className="guess-output li span:nth-child(2)";
-    const i=document.createElement('i');
-    li.innerHTML=addInput.value;
-    addInput.value='';
+function skipLists() {
+    const ul = divList.querySelector('ul');
+    const li = document.createElement('li');
+    const span1 = document.createElement('span');
+    const span2 = document.createElement('span');
+    const i1 = document.createElement('i');
+    const i2 = document.createElement('i');
+    const i3 = document.createElement('i');
+    i1.className = "skip fa-solid fa-forward-step";
+    i2.className = "correct fa-solid fa-circle-check";
+    i3.className = "wrong fa-solid fa-circle-xmark";
+    i1.style.opacity = 1;
+    i2.style.opacity = 0;
+    i2.style.opacity = 0;
+    span1.append(i1);
+    span1.append(i2);
+    span1.append(i3);
+    span2.innerHTML = "Skipped";
+    addInput.value = '';
     li.append(span1);
     li.append(span2);
     ul.appendChild(li);
@@ -25,8 +74,22 @@ addBtn.addEventListener('click', () => {
     addLists();
 });
 
-addInput.addEventListener('keyup', (event) => {
-    if(event.which === 13) {
-      addLists();
+addInput.addEventListener("keypress", function (event) {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        addLists();
     }
 });
+
+skipBtn.addEventListener('click', () => {
+    skipLists()
+});
+
+skipBtn.addEventListener("keypress", function (event) {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        skipLists();
+    }
+});
+
+importScripts

@@ -41,7 +41,7 @@
 
     <div class="header">
         <header>
-            <a class="logo" onclick="top_scroll()"><span>Ch<i class="vinyl fa-solid fa-compact-disc"></i>rus</span></a>
+            <a data-modal-target="#home-modal" class="logo" onclick="top_scroll()"><span>Ch<i class="vinyl fa-solid fa-compact-disc"></i>rus</span></a>
             <nav>
                 <ul class="nav_links">
                     <li><button data-modal-target="#htp-modal" class="rules-open-btn"><i class="icon fa-sharp fa-solid fa-circle-question"></i></button></li>
@@ -94,21 +94,21 @@
                 </svg>
             </div>
             <form class="guess-input" action="" autocomplete="off">
-                <input id="addInput" type="text" placeholder="Guess song here" >
+                <input id="addInput" type="text" placeholder="Guess song here">
             </form>
             <div class="buttons">
-                <button id="skipInput" type="sumbit">Skip</button>
+                <button id="skipBtn" type="sumbit">Skip</button>
                 <button id="addBtn" type="submit">Submit</button>
             </div>
         </div>
         <!-- Guess List -->
         <div class="guess-container">
             <ul class="guess-output">
-                <li class="guess-output-li">
+                <!-- <li class="guess-output-li">
                     <span class="fa-icon"> <i class="skip fa-solid fa-forward-step"></i> <i class="correct fa-solid fa-circle-check"></i> <i class="wrong fa-solid fa-circle-xmark"></i></span>
                     <span class="guess-content"></span>
                 </li>
-                <!-- <li>
+                <li>
                     <span class="fa-icon"> <i class="skip fa-solid fa-forward-step"></i> <i class="correct fa-solid fa-circle-check"></i> <i class="wrong fa-solid fa-circle-xmark"></i></span>
                     <span class="guess-content"></span>
                 </li>
@@ -163,42 +163,64 @@
         </div>
         <button data-close-button class="close-btn">Play</button>
     </div>
-    <div id="overlay"></div>
 
     <!-- Statistics Pop Up -->
-    <dialog class="modal stats-modal" id="stats-modal">
+    <div class="modal stats-modal" id="stats-modal">
         <div class="stats">
             <h2 class="reveal rule_heading">Statistics</h2>
             <div class="stats-container">
                 <div class="flex-item">
-                    <div class="stat"></div>
+                    <div class="stat">0</div>
                     <div class="stat-heading">Played</div>
                 </div>
                 <div class="flex-item">
-                    <div class="stat"></div>
+                    <div class="stat">0</div>
                     <div class="stat-heading">Wins</div>
                 </div>
                 <div class="flex-item">
-                    <div class="stat"></div>
+                    <div class="stat">0</div>
                     <div class="stat-heading">Win %</div>
                 </div>
                 <div class="flex-item">
-                    <div class="stat"></div>
+                    <div class="stat">0</div>
                     <div class="stat-heading">Current Streak</div>
                 </div>
                 <div class="flex-item">
-                    <div class="stat"></div>
+                    <div class="stat">0</div>
                     <div class="stat-heading">Max Streak</div>
                 </div>
             </div>
-            <button data-close-button class="close-btn">Back</button>
         </div>
+        <button data-close-button class="close-btn">Go Back</button>
+    </div>
+
+    <!-- Home Page Modal -->
+    <div class="modal home-modal" id="home-modal">
+        <div class="home-container">
+            <h2>Going back to the home page will automatically forfeit the current game.</h2>
+            <br>
+            <p>Are you sure you want to continue?</p>
+            <div>
+                <button data-close-button class="close-btn">Go Back</button>
+                <button class="close-btn" onClick="location.href='index.php'">Continue</button>
+            </div>
+        </div>
+    </div>
 
 
-        <script src="./JavaScript/fade.js"></script>
-        <script src="./JavaScript/PlayGame/toggleButton.js"></script>
-        <script src="./JavaScript/PlayGame/addItemToList.js"></script>
-        <script src="./JavaScript/PlayGame/openAndCloseModal.js"></script>
+    <!-- Enter Valid Input Modal -->
+    <dialog class="valid-input-modal" id="valid-input-modal">
+        <h2>Please Enter a Valid Input!</h2>
+        <button class="close-btn" id="valid-input-modal-close-btn">Okay</button>
+    </dialog>
+
+    <div id="overlay"></div>
+
+
+    <script src="./JavaScript/fade.js"></script>
+    <script src="./JavaScript/PlayGame/toggleButton.js"></script>
+    <script src="./JavaScript/PlayGame/addItemToList.js"></script>
+    <script src="./JavaScript/PlayGame/openAndCloseModal.js"></script>
 
 
 </body>
