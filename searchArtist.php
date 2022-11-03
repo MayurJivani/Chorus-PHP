@@ -17,6 +17,7 @@
 
   <!-- CSS sheet link -->
   <link rel="stylesheet" href="./CSS/searchArtist.css">
+  <link rel="stylesheet" href="./CSS/fade.css">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,6 +26,19 @@
 </head>
 
 <body>
+  <svg id="fader"></svg>
+  <script>
+    fadeInPage();
+
+    function fadeInPage() {
+      if (!window.AnimationEvent) {
+        return;
+      }
+      var fader = document.getElementById('fader');
+      fader.classList.add('fade-out');
+    }
+  </script>
+
   <h2>Search an Artist</h2>
   <form class="search-bar" autocomplete="off">
     <input type="text" id="search" placeholder="Search Here">
@@ -58,7 +72,8 @@
 
     }
   </script>
-
+  
+  <script src="./JavaScript/fade.js"></script>
 </body>
 
 </html>

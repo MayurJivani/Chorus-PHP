@@ -5,8 +5,16 @@ const divList = document.querySelector(".guess-container");
 const spanEle = document.querySelector(".fa-icon");
 const liEle = document.querySelector(".guess-output-li");
 const songName = "Hello";
+var count = 0;
 
 function addLists() {
+    count++;
+    if (count == 6) {
+        setTimeout(() => {
+            window.location = "./result.php";
+        }, 1000);
+
+    }
     const ul = divList.querySelector('ul');
     const li = document.createElement('li');
     const span1 = document.createElement('span');
@@ -30,6 +38,9 @@ function addLists() {
         i1.style.opacity = 0;
         i2.style.opacity = 1;
         i3.style.opacity = 0;
+        setTimeout(() => {
+            window.location = "./result.php";
+        }, 1000);
     }
     else {
         i1.style.opacity = 0;
@@ -47,6 +58,13 @@ function addLists() {
 }
 
 function skipLists() {
+    count++;
+    if (count == 6) {
+        setTimeout(() => {
+            window.location = "./result.php";
+        }, 1000);
+
+    }
     const ul = divList.querySelector('ul');
     const li = document.createElement('li');
     const span1 = document.createElement('span');
@@ -92,4 +110,3 @@ skipBtn.addEventListener("keypress", function (event) {
     }
 });
 
-importScripts

@@ -14,7 +14,7 @@
     <script src="https://kit.fontawesome.com/fddf746e6f.js" crossorigin="anonymous"></script>
 
     <!-- CSS sheet link -->
-    <link rel="stylesheet" href="./CSS/playGame.css">
+    <link rel="stylesheet" href="./CSS/resultPage.css">
     <link rel="stylesheet" href="./CSS/fade.css">
 
     <!-- Google Fonts -->
@@ -25,7 +25,6 @@
 </head>
 
 <body>
-
     <svg id="fader"></svg>
     <script>
         fadeInPage();
@@ -51,10 +50,9 @@
         </header>
     </div>
 
-
     <div class="container">
-        <!-- Record Player -->
         <div class="player-container">
+            <h2>Your Score : 100</h2>
             <button data-value="false" id="button-toggle" type="button" onclick="toggleButton()">
                 <i class="pause fa-solid fa-pause"></i>
                 <i class="play fa-solid fa-play"></i>
@@ -92,25 +90,17 @@
                     </defs>
                     <image xlink:href="./Images/ritwik.jpg" x="250" y="250" height="300px" width="300px" clip-path="url(#coverClip)" />
                 </svg>
-            </div>
-            <form class="guess-input" action="" autocomplete="off">
-                <input id="addInput" type="text" placeholder="Guess song here">
-            </form>
-            <div class="buttons">
-                <button id="skipBtn" type="sumbit">Skip</button>
-                <button id="addBtn" type="submit">Submit</button>
+                <p class="songName">Song Name</p>
+                <p class="artistName">Artist Name</p>
             </div>
         </div>
-        <!-- Guess List -->
-        <div class="guess-container">
-            <ul class="guess-output fade">
-                <!-- <li class="guess-output-li">
-                    <span class="fa-icon"> <i class="skip fa-solid fa-forward-step"></i> <i class="correct fa-solid fa-circle-check"></i> <i class="wrong fa-solid fa-circle-xmark"></i></span>
-                    <span class="guess-content"></span>
-                </li>-->
-            </ul>
+        <div class="buttons">
+            <button id="skipBtn" type="sumbit" onclick="location.href='selectMode.php'">Change Mode</button>
+            <button id="addBtn" type="submit" onclick="location.href='playGame.php'">Play Again</button>
         </div>
     </div>
+    
+
 
     <!-- How to Play Pop Up -->
     <div class="modal how-to-play-modal" id="htp-modal">
@@ -175,7 +165,7 @@
     <!-- Home Page Modal -->
     <div class="modal home-modal" id="home-modal">
         <div class="home-container">
-            <h2>Going back to the home page will automatically forfeit the current game.</h2>
+            <h2>Going back to the home page will end the current session.</h2>
             <br>
             <p>Are you sure you want to continue?</p>
             <div>
@@ -185,20 +175,9 @@
         </div>
     </div>
 
-
-    <!-- Enter Valid Input Modal -->
-    <dialog class="valid-input-modal" id="valid-input-modal">
-        <h2>Please Enter a Valid Input!</h2>
-        <button class="close-btn" id="valid-input-modal-close-btn">Okay</button>
-    </dialog>
-
     <div id="overlay"></div>
 
-
+    <script src="./JavaScript/PlayGame/openAndCloseModal.js"></script>
     <script src="./JavaScript/fade.js"></script>
     <script src="./JavaScript/PlayGame/toggleButton.js"></script>
-    <script src="./JavaScript/PlayGame/addItemToList.js"></script>
-    <script src="./JavaScript/PlayGame/openAndCloseModal.js"></script>
-
-
 </body>

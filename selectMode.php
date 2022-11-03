@@ -28,7 +28,6 @@ session_start();
 </head>
 
 <body>
-
     <svg id="fader"></svg>
     <script>
         fadeInPage();
@@ -52,7 +51,7 @@ session_start();
             </div>
             <p>Play by Searching your Favourite Artists</p>
             <div class="search-bar">
-                <button type="sumbit">Search Now</button>
+                <button type="sumbit" onClick="location.href='searchArtist.php'">Search Now</button>
             </div>
         </div>
         <div class="card-2">
@@ -61,7 +60,7 @@ session_start();
             </div>
             <p>Guess songs on the Billboard Top 100</p>
             <div class="play-button">
-                <button type="sumbit">Play Now</button>
+                <button type="sumbit" onClick="location.href='playGame.php'">Play Now</button>
             </div>
 
         </div>

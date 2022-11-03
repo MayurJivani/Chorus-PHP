@@ -190,56 +190,6 @@ p {
     cursor: pointer;
 }
 
-/* .search-bar{
-    width: 50%;
-    z-index: 5;
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 85%;
-    bottom: 0;
-    margin: 0 auto 30px;
-    background: rgba(255,255,255,0.2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 60px;
-    padding:10px 10px;
-    transition: all 1s ease;
-}
-
-.search-bar input{
-    background: transparent;
-    border: 0;
-    flex:1;
-    outline:none;
-    font-size: 1rem;
-    color: white;
-    padding-left: 20px;
-}
-
-::placeholder { 
-    text-align: center;
-    font-family: 'Montserrat', sans-serif;
-    color:white;
-    opacity: 1;
-    transition: opacity 0.5s ease;
-}
-
-.search-bar button img{
-    width: 15px;
-    text-align: center;
-}
-
-.search-bar button{
-    border:0;
-    border-radius: 50%;
-    width: 35px;
-    height: 35px;
-    background: rgba(255,255,255,0.5);
-    transition: all 1s ease;
-    cursor: pointer;
-} */
 
 .play-button{
     width: 50%;

@@ -28,7 +28,7 @@ html {
 
 body {
     margin: 0;
-    padding: 15px 5%;
+    padding: 5px 5%;
     width: 100%;
     min-height: 100vh;
     background: linear-gradient(170deg, #222, #000 90%);
@@ -38,10 +38,13 @@ body {
 }
 
 h2 {
+    color: white;
     font-family: 'Outfit', sans-serif;
     text-align: center;
     font-weight: 100;
-    font-size: 2.5rem;
+    font-size: 2rem;
+    margin: 0;
+    margin-bottom: 20px;
 }
 
 /*Header*/
@@ -58,8 +61,17 @@ h2 {
 
 }
 
-.logo {
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
 
+    100% {
+        opacity: 1;  
+    }
+}
+
+.logo {
     font-family: 'Red Hat Display', sans-serif;
     font-size: 3rem;
     font-weight: 500;
@@ -133,77 +145,68 @@ header {
 }
 
 .container {
-    padding: 30px 0;
+    padding: 20px 0;
     display: flex;
-    gap: 100px;
-
+    flex-direction: column;
+    gap: 30px;
 }
 
-/*Vinyl-section*/
+/* Vinyl */
+.cd-player{
+    display: inline-block;
+    background-color: #262626;
+    padding: 30px 50px;
+    border-radius: 30px;
+}
+
+
+.songName{
+    margin: 0;
+    margin-top: 30px;
+    font-size: 1.15rem;
+    color: white;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.artistName{
+    margin: 0;
+    font-size: 1rem;
+    margin-top:10px;
+    color:rgba(255 255 255/0.5);
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+}
 
 .player-container {
-    background-color: #262626;
-    padding: 30px;
-    border-radius: 30px;
     position: relative;
     opacity: 0;
     animation: slide-in-top 1s cubic-bezier(.39, .575, .565, 1) forwards;
     animation-delay: 1s;
+    text-align: center; 
+    display: inline-block;
 }
 
 .vinyl-img {
-    width: 25vw;
+    width: 350px;
+    aspect-ratio: 1/1;
+    object-fit: cover;
     animation: rotate 3s linear infinite;
     animation-delay: 0.1s;
 }
 
-.guess-input {
-    width: 100%;
-    margin: 20px auto 30px;
-    background: rgba(255, 255, 255, 0.2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 16px;
-    padding: 15px 10px;
-    transition: all 1s ease;
-}
-
-.guess-input input {
-    background: transparent;
-    border: 0;
-    flex: 1;
-    outline: none;
-    font-size: 1rem;
-    color: white;
-    padding-left: 20px;
-    text-align: center;
-    font-family: 'Montserrat', sans-serif;
-}
-
-::placeholder {
-    text-align: center;
-    font-family: 'Montserrat', sans-serif;
-    color: white;
-    opacity: 1;
-    transition: opacity 0.5s ease;
-}
-
-input:focus::placeholder {
-    opacity: 0;
-}
-
 .buttons {
     display: flex;
-    justify-content: space-around;
+    flex-direction: row;
+    justify-content: center;
     gap: 20px;
+
 }
 
 .buttons button {
     background-color: #340030;
-    width: 40%;
+    width: max(15%,50px);
     border: 0;
-    flex: 1;
     outline: none;
     font-size: 1rem;
     color: white;
@@ -213,6 +216,9 @@ input:focus::placeholder {
     padding: 15px 10px;
     border-radius: 16px;
     transition: transform 0.5s ease;
+    opacity:0;
+    animation: fadeIn 1s ease forwards;
+    animation-delay: 1.5s;
 }
 
 .buttons button:hover {
@@ -221,12 +227,12 @@ input:focus::placeholder {
 
 /* Pause-Play Button */
 #button-toggle {
-    height: 3.5rem;
-    width: 3.5rem;
+    height: 3rem;
+    width: 3rem;
     position: absolute;
     z-index: 2;
-    left: 70%;
-    top: 55%;
+    left: 49%;
+    top: 70%;
     background-color: #003973;
     border: none;
     border-radius: 50%;
@@ -293,122 +299,10 @@ input:focus::placeholder {
     }
 }
 
-
-/* Guess */
-.guess-container {
-    flex: 1;
-    display: flex;
-    width: 100%;
-    background-color: #262626;
-    border-radius: 30px;
-    position: relative;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    animation: slide-in-top 1s cubic-bezier(.39, .575, .565, 1) forwards;
-    animation-delay: 1.5s;
-}
-
-.guess-output {
-    list-style: none;
-    margin: 0 auto;
-    width: 90%;
-    height: 100%;
-    padding: 30px 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-}
-
-.guess-output li {
-    width: 100%;
-    display: flex;
-    padding: 25px 20px;
-    margin: 10px 0;
-    position: relative;
-    text-decoration: none;
-    background-color: #262626;
-    border-radius: 16px;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 1.25rem;
-    gap: 30px;
-    animation: fadeIn 1s ease forwards;
-    opacity: 0;
-}
-
-@keyframes fadeIn {
-    0%{
-        opacity: 0;
-        transform: translateX(-3rem);
-    }
-    
-    100%{
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-.guess-output li:nth-child(1) {
-    background: rgba(255, 255, 255, 0.12);
-}
-
-.guess-output li:nth-child(2) {
-    background: rgba(255, 255, 255, 0.1);
-}
-
-.guess-output li:nth-child(3) {
-    background: rgba(255, 255, 255, 0.07);
-}
-
-.guess-output li:nth-child(4) {
-    background: rgba(255, 255, 255, 0.05);
-}
-
-.guess-output li:nth-child(5) {
-    background: rgba(255, 255, 255, 0.02);
-}
-
-.guess-output li:nth-child(6) {
-    background: rgba(255, 255, 255, 0.01);
-}
-
-.guess-output li span:nth-child(1) {
-    width: 10%;
-    position: relative;
-}
-
-.guess-output li span:nth-child(2) {
-    width: 80%;
-    height: 1.25rem;
-}
-
-.guess-output li i {
-    font-size: 1.5rem;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    opacity: 0;
-}
-
-.guess-output li .skip {
-    opacity: 0;
-}
-
-.guess-output li .correct {
-    opacity: 0;
-    color: green;
-}
-
-.guess-output li .wrong {
-    opacity: 0;
-    color: red;
-}
-
 /* How to Play Pop-up */
 .how-to-play-modal {
     position: fixed;
-    top: 55%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -1000px);
     opacity: 0;
@@ -554,7 +448,7 @@ input:focus::placeholder {
 /* Statistics Pop-up */
 .stats-modal {
     position: fixed;
-    top: 55%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -1000px);
     opacity: 0;
@@ -599,7 +493,7 @@ input:focus::placeholder {
 /* Go to Home Pop-up */
 .home-modal {
     position: fixed;
-    top: 55%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -1000px);
     opacity: 0;

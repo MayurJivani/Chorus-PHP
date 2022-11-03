@@ -56,7 +56,7 @@
     }
 
     function search_artist($query){
-        $options = array("limit"=>5);
+        $options = array("limit"=>20);
         require 'vendor/autoload.php';
         $api = new SpotifyWebAPI\SpotifyWebAPI();
         session_start();
@@ -66,20 +66,24 @@
         foreach ($results->artists->items as $artist) {
             $artist_id=$artist->id;
             $artist_name=$artist->name;
-            $artist_popularity=$artist->popularity;
+            $artist_followers=$artist->followers->total;
             $artist_spotify=$artist->external_urls->spotify;
             foreach($artist->images as $pfp){
                 $artist_pfp=$pfp->url;
                 break;
             }
-            echo "<li>";
-            echo "<span class='artist-id'>".$artist_id."</span> &emsp;";
-            echo "<span class='artist-name'>".$artist_name."</span> &emsp;";
-            echo "<span class='artist-pfp'>".$artist_pfp."</span> &emsp;";
-            echo "<span class='artist-pop'>".$artist_popularity."</span> &emsp;";
-            echo "<span class='artist-url'>"."<a href='$artist_spotify'>link</a>"."</span>";
-            //echo "Id: ".$artist_id." Name: ".$artist_name." Image: ".$artist_pfp." Popularity: ".$artist_popularity." Spotify: ".$artist_spotify;
+            echo "<li class='animated fadeInLeft'>";
+
+            echo "<span class='artist-id'>".$artist_id."</span>";
+            echo "<span class='artist-pfp'><img class='artist-img' src='".$artist_pfp."'></span>";
+            echo "<div class='artist-info'>";
+            echo "<span class='artist-name'>".$artist_name."</span>";
+            echo "<span class='artist-pop'>".number_format($artist_followers)." followers</span>";
+            echo "</div>";
+            echo "<span class='artist-url'>"."<a href='$artist_spotify' target='_blank'><i class='fa-brands fa-spotify'></i></a>"."</span>";
+
             echo "</li>";
+
         }
         echo "</ul>";
 
