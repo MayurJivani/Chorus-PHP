@@ -45,7 +45,7 @@
     <button onclick="ajaxSearch()"><img src="./Images/search.png" alt="search-icon" srcset=""></button>
   </form>
   <div id="output"></div>
-
+  <div id="artistTrack"></div>
   <script type="text/javascript">
     $(document).ready(function() {
       var textBox = document.getElementById("search");
@@ -70,6 +70,11 @@
         }
       });
 
+    }
+    function artistSelect(i){
+      var aid = document.getElementById('artist-id'+i).textContent;
+      $.post('app.php', {artistID: aid});
+      location.href='playGame.php';
     }
   </script>
   

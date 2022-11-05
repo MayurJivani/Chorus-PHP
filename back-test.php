@@ -1,4 +1,5 @@
 <?php 
-    $input = $_POST['name'];
-    echo "$input";
+    session_start();
+    echo $_SESSION['TrackToPlay'];
+    echo $_SESSION['TrackName'];
 ?>
