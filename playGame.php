@@ -221,8 +221,6 @@
     
     <script>
         deviceID = 0;
-        isPlay = true;
-        isFirst = true;
         isPlay = true; 
         isFirst = true;  
 

@@ -53,7 +53,7 @@
             document.getElementById('togglePlay').onclick = function() {
               player.togglePlay();
               $.ajax({url:"app.php?mode=play&init=true"})
-              /*if(isPlay && isFirst){
+              if(isPlay && isFirst){
                 $.ajax({url:"app.php?mode=play&init=true"})
               }else if(isPlay){
                 $.ajax({url:"app.php?mode=play"})
@@ -62,7 +62,7 @@
               }
 
               isPlay = !isPlay;
-              isFirst = false;*/
+              isFirst = false;
               
             };
 
