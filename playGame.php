@@ -249,7 +249,7 @@
             document.getElementById('button-toggle').onclick = function() {
               player.togglePlay();
               $.ajax({url:"app.php?mode=play&init=true"})
-              /*if(isPlay && isFirst){
+              if(isPlay && isFirst){
                 $.ajax({url:"app.php?mode=play&init=true"})
               }else if(isPlay){
                 $.ajax({url:"app.php?mode=play"})
@@ -258,7 +258,15 @@
               }
 
               isPlay = !isPlay;
-              isFirst = false;*/
+              isFirst = false;
+              
+              const btn = document.querySelector('#button-toggle');
+                btn.dataset.value=btn.dataset.value === "true" ? "false" : "true";
+                console.log(btn.dataset.value);
+
+                const vinyl = document.querySelector('.cd-player');
+                vinyl.dataset.value=vinyl.dataset.value === "true" ? "false" : "true";
+                console.log("Vinyl: "+btn.dataset.value);
               
             };
 

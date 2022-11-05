@@ -92,21 +92,23 @@
             $TrackArray = array_unique($TrackArray); 
             $Tno=rand('0',count($TrackArray));
             $TrackToPlay=$TrackArray[$Tno];
+            $tname=$api->getTrack($TrackToPlay);
             $_SESSION['TrackToPlay']=$TrackToPlay;
-            $_SESSION['TrackName'] = $track_result->name;
+            $_SESSION['TrackName'] = $tname->name;
         }
     }
     if(isset($_GET["mode"])){
         if($_GET["mode"] == "play" && $_GET["init"] == "true"){
             start_playback();
         }
-    }
-    
-    /*else if($_GET["mode"] == "play"){
+        else if($_GET["mode"] == "play"){
             resume_playback();
         }else if($_GET["mode"] == "pause"){
             stop_playback();
-        }*/
+        }
+    }
+    
+    
     
     if(isset($_POST['name'])){
         $input = $_POST['name'];
