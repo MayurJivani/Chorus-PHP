@@ -42,10 +42,22 @@
   <h2>Search an Artist</h2>
   <form class="search-bar" autocomplete="off">
     <input type="text" id="search" placeholder="Search Here">
-    <button onclick="ajaxSearch()"><img src="./Images/search.png" alt="search-icon" srcset=""></button>
+    <button onclick="ajaxSearch()"><img src="./Images/search.png" alt="search-icon" srcset="" data-modal-target="#valid-input-modal"></button>
   </form>
   <div id="output"></div>
   <div id="artistTrack"></div>
+
+  <div class="modal valid-input-modal" id="valid-input-modal">
+    <div class="home-container">
+      <h2>Please Enter a Valid Input</h2>
+      <div>
+        <button data-close-button class="close-btn">Okay</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="overlay"></div>
+
   <script type="text/javascript">
     $(document).ready(function() {
       var textBox = document.getElementById("search");
@@ -71,14 +83,18 @@
       });
 
     }
-    function artistSelect(i){
-      var aid = document.getElementById('artist-id'+i).textContent;
-      $.post('app.php', {artistID: aid});
-      location.href='playGame.php';
+
+    function artistSelect(i) {
+      var aid = document.getElementById('artist-id' + i).textContent;
+      $.post('app.php', {
+        artistID: aid
+      });
+      location.href = 'playGame.php';
     }
   </script>
-  
+
   <script src="./JavaScript/fade.js"></script>
+  <script src="./JavaScript/validInputModal.js"></script>
 </body>
 
 </html>
