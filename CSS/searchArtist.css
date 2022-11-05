@@ -249,3 +249,71 @@ li:hover>.artist-pfp {
     }
 
 }
+
+
+
+/*Valid-input-modal*/
+.valid-input-modal {
+    position: fixed;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -1000px);
+    opacity: 0;
+    transition: all 0.5s cubic-bezier(.39, .575, .565, 1);
+    background-color: rgb(27, 27, 27);
+    max-width: 30%;
+    border-radius: 16px;
+    border: 0;
+    box-shadow: 0 0 1em rgba(24, 24, 24, 0.5);
+    z-index: 10;
+    padding: 20px 30px;
+}
+
+.valid-input-modal.active{
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+}
+
+.valid-input-modal h2{
+    color: white;
+    font-size: 1.5rem;
+}
+
+.close-btn {
+    background-color: #340030;
+    display: block;
+    width: 40%;
+    border: 0;
+    margin: 30px auto 10px auto;
+    outline: none;
+    font-size: 1.15rem;
+    color: white;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    cursor: pointer;
+    padding: 15px 10px;
+    border-radius: 16px;
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.close-btn:hover {
+    transform: scale(1.06);
+    box-shadow: 0px 0px 10px 5px rgba(0 0 0 /0.2);
+}
+
+#overlay {
+    position: fixed;
+    opacity: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.9);
+    pointer-events: none;
+    transition: all 0.5s ease;
+}
+
+#overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
