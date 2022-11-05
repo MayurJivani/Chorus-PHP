@@ -97,7 +97,17 @@
                             <path fill="#4bb749" d="M400,262.1c-76.1,0-137.9,61.7-137.9,137.9S323.9,537.9,400,537.9S537.9,476.1,537.9,400S476.1,262.1,400,262.1z M400,411.7c-6.4,0-11.7-5.2-11.7-11.7s5.2-11.7,11.7-11.7s11.7,5.2,11.7,11.7S406.4,411.7,400,411.7z"></path>
                         </clipPath>
                     </defs>
-                    <image xlink:href="./Images/ritwik.jpg" x="250" y="250" height="300px" width="300px" clip-path="url(#coverClip)" />
+                    <?php
+                        require 'vendor/autoload.php';
+                        $api = new SpotifyWebAPI\SpotifyWebAPI();
+                        $api->setAccessToken($_SESSION["accessToken"]);
+                        $results = $api->getArtist($_SESSION['artistID']);
+                        foreach($results->images as $pfp){
+                                $artist_pfp=$pfp->url;
+                                break;
+                            }
+                        echo '<image xlink:href='."$artist_pfp ".'x="250" y="250" height="300px" width="300px" clip-path="url(#coverClip)" />'
+                    ?>
                 </svg>
             </div>
             <form class="guess-input" action="" autocomplete="off">
@@ -105,7 +115,7 @@
             </form>
             <div class="buttons">
                 <button id="skipBtn" type="sumbit">Skip</button>
-                <button id="addBtn" type="submit">Submit</button>
+                <button id="addBtn" type="submit" onclick="guessInput()">Submit</button>
             </div>
         </div>
         <!-- Guess List -->
@@ -213,6 +223,8 @@
         deviceID = 0;
         isPlay = true;
         isFirst = true;
+        isPlay = true; 
+        isFirst = true;  
 
         window.onSpotifyWebPlaybackSDKReady = () => {
             const token = "<?php echo $_SESSION['accessToken']; ?>";
@@ -247,30 +259,38 @@
             });
 
             document.getElementById('button-toggle').onclick = function() {
-              player.togglePlay();
-              $.ajax({url:"app.php?mode=play&init=true"})
-              if(isPlay && isFirst){
-                $.ajax({url:"app.php?mode=play&init=true"})
-              }else if(isPlay){
-                $.ajax({url:"app.php?mode=play"})
-              }else{
-                $.ajax({url:"app.php?mode=pause"})
-              }
+                if(isFirst){
+                    player.togglePlay();
+                    $.ajax({url:"app.php?mode=play"})
+                    setTimeout(autopause, 3500);
+                    isFirst = false;
+                }else{
+                    player.resume();
+                    setTimeout(autopause, 2000);
+                }
 
-              isPlay = !isPlay;
-              isFirst = false;
-              
-              const btn = document.querySelector('#button-toggle');
+                const btn = document.querySelector('#button-toggle');
                 btn.dataset.value=btn.dataset.value === "true" ? "false" : "true";
                 console.log(btn.dataset.value);
 
                 const vinyl = document.querySelector('.cd-player');
                 vinyl.dataset.value=vinyl.dataset.value === "true" ? "false" : "true";
                 console.log("Vinyl: "+btn.dataset.value);
-              
+
             };
 
-            player.connect();
+            player.connect();      
+            function autopause(){
+                player.pause();
+                const btn = document.querySelector('#button-toggle');
+                btn.dataset.value=btn.dataset.value === "true" ? "false" : "true";
+                console.log(btn.dataset.value);
+
+                const vinyl = document.querySelector('.cd-player');
+                vinyl.dataset.value=vinyl.dataset.value === "true" ? "false" : "true";
+                console.log("Vinyl: "+btn.dataset.value);
+                player.seek(0 * 1000)
+            }
         }
     </script>
 
