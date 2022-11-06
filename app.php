@@ -79,20 +79,26 @@
     function getTrackFromArtitst($aid){
         session_start();
         $TrackArray = array();
+        $albumsID = "";
+        $options = array("include_groups"=>"album");
         if(isset($_SESSION['artistID'])){
             $artistID = $_SESSION['artistID'];
             require 'vendor/autoload.php';
             $api = new SpotifyWebAPI\SpotifyWebAPI();
             $api->setAccessToken($_SESSION["accessToken"]);
-            $results=$api->getArtistAlbums($artistID);
+            $results=$api->getArtistAlbums($artistID, $options);
             foreach ($results->items as $albums) {
-                $album_result=$api->getAlbumTracks($albums->id);
-                foreach ($album_result->items as $tracks) {
-                $track_result=$api->getTrack($tracks->id);
-                    array_push($TrackArray, "$track_result->id");
+                $albumsID .= $albums->id;
+                $albumsID .= ",";
+            }
+            $albumsID=rtrim($albumsID, ",");
+            $album_result=$api->getAlbums($albumsID);
+            foreach ($album_result->albums as $tracksInAlbum) {
+                $Atracks = $tracksInAlbum->tracks;
+                foreach ($Atracks->items as $tracks) {
+                    array_push($TrackArray, "$tracks->id");
                 }
             }
-            $TrackArray = array_unique($TrackArray); 
             $Tno=rand('0',count($TrackArray));
             $TrackToPlay=$TrackArray[$Tno];
             $tname=$api->getTrack($TrackToPlay);
