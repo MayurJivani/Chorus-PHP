@@ -79,6 +79,7 @@
     function getTrackFromArtitst($aid){
         session_start();
         $TrackArray = array();
+        $TrackNameArray = array();
         $albumsID = "";
         $options = array("include_groups"=>"album");
         if(isset($_SESSION['artistID'])){
@@ -97,16 +98,25 @@
                 $Atracks = $tracksInAlbum->tracks;
                 foreach ($Atracks->items as $tracks) {
                     array_push($TrackArray, "$tracks->id");
+                    array_push($TrackNameArray, "$tracks->name");
                 }
             }
             $Tno=rand('0',count($TrackArray));
             $TrackToPlay=$TrackArray[$Tno];
-            $tname=$api->getTrack($TrackToPlay);
             $_SESSION['TrackToPlay']=$TrackToPlay;
-            $_SESSION['TrackName'] = $tname->name;
+            $_SESSION['TrackName'] = $TrackNameArray[$Tno];
+            $_SESSION['TrackArray']=$TrackArray;
+            $_SESSION['TrackNameArray']=$TrackNameArray;
         }
     }
-
+    function NextSong(){
+            $Tno=rand('0',count($TrackArray));
+            $TrackToPlay=$TrackArray[$Tno];
+            $_SESSION['TrackToPlay']=$TrackToPlay;
+            $_SESSION['TrackName'] = $TrackNameArray[$Tno];
+            $_SESSION['TrackArray']=$TrackArray;
+            $_SESSION['TrackNameArray']=$TrackArray;
+    }
     function guessSong(){
 
     }
