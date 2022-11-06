@@ -22,6 +22,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500&family=Happy+Monkey&family=Montserrat:wght@200;400;600&family=Outfit:wght@400;700&family=Red+Hat+Display&family=Varela+Round&display=swap" rel="stylesheet">
 
+    <!-- Ajax -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.1.3/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 </head>
 
 <body>
@@ -96,7 +100,7 @@
         </div>
         <div class="buttons">
             <button id="skipBtn" type="sumbit" onclick="location.href='selectMode.php'">Change Mode</button>
-            <button id="addBtn" type="submit" onclick="location.href='playGame.php'">Play Again</button>
+            <button id="addBtn" type="submit" onclick="newSong()">Play Again</button>
         </div>
     </div>
     
@@ -180,4 +184,16 @@
     <script src="./JavaScript/PlayGame/openAndCloseModal.js"></script>
     <script src="./JavaScript/fade.js"></script>
     <script src="./JavaScript/PlayGame/toggleButton.js"></script>
+
+    <script>
+        function newSong(){
+            var aid = "YESSIR";
+            $.post('app.php', {
+                nextSong: aid
+            });
+            location.href='playGame.php';
+        }
+        
+    </script>
+
 </body>

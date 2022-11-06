@@ -273,6 +273,7 @@ session_start();
 
             document.getElementById('button-toggle').onclick = function() {
                 if (isFirst) {
+                    
                     player.togglePlay();
                     $.ajax({
                         url: "app.php?mode=play"

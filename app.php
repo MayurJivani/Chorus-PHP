@@ -110,12 +110,13 @@
         }
     }
     function NextSong(){
+            session_start();
+            $TrackArray=$_SESSION['TrackArray'];
+            $TrackNameArray=$_SESSION['TrackNameArray'];
             $Tno=rand('0',count($TrackArray));
             $TrackToPlay=$TrackArray[$Tno];
             $_SESSION['TrackToPlay']=$TrackToPlay;
             $_SESSION['TrackName'] = $TrackNameArray[$Tno];
-            $_SESSION['TrackArray']=$TrackArray;
-            $_SESSION['TrackNameArray']=$TrackArray;
     }
     function guessSong(){
 
@@ -135,6 +136,9 @@
         session_start();
         $_SESSION['artistID']=$_POST['artistID'];
         getTrackFromArtitst($_SESSION['artistID']);
+    }
+    if(isset($_POST['nextSong'])){
+        NextSong();
     }
     
 ?>
