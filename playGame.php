@@ -104,8 +104,10 @@ session_start();
                     $api = new SpotifyWebAPI\SpotifyWebAPI();
                     $api->setAccessToken($_SESSION["accessToken"]);
                     $results = $api->getArtist($_SESSION['artistID']);
+                    $_SESSION["ArtistName"]=$results->name;
                     foreach ($results->images as $pfp) {
                         $artist_pfp = $pfp->url;
+                        $_SESSION["ArtistProfile"]=$artist_pfp;
                         break;
                     }
                     echo '<image xlink:href=' . "$artist_pfp " . 'x="250" y="250" height="300px" width="300px" clip-path="url(#coverClip)" />'

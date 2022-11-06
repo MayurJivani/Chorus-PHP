@@ -1,5 +1,9 @@
-<?php 
+<?php
     session_start();
+    echo $_SESSION["ArtistName"];
+    echo "<br>";
+    echo $_SESSION["ArtistProfile"];
+    echo "<br>";
     echo $_SESSION['TrackToPlay'];
     echo "<br>";
     echo $_SESSION['TrackName'];
