@@ -1,10 +1,23 @@
 const openModalButtons = document.querySelectorAll('[data-modal-target]');
 const closeModalButtons = document.querySelectorAll('[data-close-button]');
 const overlay = document.getElementById('overlay');
+const playPauseBtn = document.querySelector('#button-toggle');
 
 openModalButtons.forEach(button => {
     button.addEventListener('click',() => {
-        const modal=document.querySelector(button.dataset.modalTarget)
+        const modal=document.querySelector(button.dataset.modalTarget);
+        console.log(modal.className);
+        if(modal.className=="modal play-before-skip-modal")
+        {
+            if (playPauseBtn.dataset.clickonce == "false")
+            {
+                openModal(modal);
+            }
+            else
+            {
+                return
+            }
+        }
         openModal(modal);
     })
 })

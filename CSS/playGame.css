@@ -674,3 +674,35 @@ input:focus::placeholder {
     font-size: 1.75rem;
 
 }
+
+/*Play Song before Skip Modal*/
+.play-before-skip-modal {
+    position: fixed;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -1000px);
+    opacity: 0;
+    transition: all 0.5s cubic-bezier(.39, .575, .565, 1);
+    background-color: rgb(27, 27, 27);
+    max-width: 30%;
+    border-radius: 16px;
+    border: 0;
+    box-shadow: 0 0 1em rgba(24, 24, 24, 0.5);
+    z-index: 10;
+    padding: 20px 30px;
+}
+
+.play-before-skip-modal.active {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+}
+
+.play-before-skip-modal>.home-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.play-before-skip-modal>h2{
+    font-size: 1.5rem;
+    line-height: 1.5;
+}

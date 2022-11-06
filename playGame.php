@@ -43,9 +43,10 @@ session_start();
             var fader = document.getElementById('fader');
             fader.classList.add('fade-out');
         }
-        function guessInput(){
-                currentGuess++;
-            }
+
+        function guessInput() {
+            currentGuess++;
+        }
     </script>
 
     <div class="header">
@@ -64,7 +65,7 @@ session_start();
     <div class="container">
         <!-- Record Player -->
         <div class="player-container">
-            <button data-value="false" id="button-toggle" type="button" onclick="toggleButton()">
+            <button data-clickonce="false" data-value="false" id="button-toggle" type="button">
                 <i class="pause fa-solid fa-pause"></i>
                 <i class="play fa-solid fa-play"></i>
             </button>
@@ -99,6 +100,7 @@ session_start();
                             <path fill="#4bb749" d="M400,262.1c-76.1,0-137.9,61.7-137.9,137.9S323.9,537.9,400,537.9S537.9,476.1,537.9,400S476.1,262.1,400,262.1z M400,411.7c-6.4,0-11.7-5.2-11.7-11.7s5.2-11.7,11.7-11.7s11.7,5.2,11.7,11.7S406.4,411.7,400,411.7z"></path>
                         </clipPath>
                     </defs>
+<<<<<<< Updated upstream
                     <?php 
                     if(isset($_SESSION['artistID'])){
                         require 'vendor/autoload.php';
@@ -121,6 +123,18 @@ session_start();
                             $_SESSION["PlaylistProfile"] = $pfp->url;
                         }
                         echo '<image xlink:href=' . "$pfp->url " . 'x="250" y="250" height="300px" width="300px" clip-path="url(#coverClip)" />';
+=======
+                    <?php
+                    require 'vendor/autoload.php';
+                    $api = new SpotifyWebAPI\SpotifyWebAPI();
+                    $api->setAccessToken($_SESSION["accessToken"]);
+                    $results = $api->getArtist($_SESSION['artistID']);
+                    $_SESSION["ArtistName"] = $results->name;
+                    foreach ($results->images as $pfp) {
+                        $artist_pfp = $pfp->url;
+                        $_SESSION["ArtistProfile"] = $artist_pfp;
+                        break;
+>>>>>>> Stashed changes
                     }
                     
                     ?>
@@ -130,7 +144,7 @@ session_start();
                 <input id="addInput" type="text" placeholder="Guess song here">
             </form>
             <div class="buttons">
-                <button id="skipBtn" type="sumbit" onclick="guessInput()">Skip</button>
+                <button data-modal-target="#play-before-skip-modal" id="skipBtn" type="sumbit" onclick="guessInput()">Skip</button>
                 <button id="addBtn" type="submit" onclick="guessInput()">Submit</button>
             </div>
         </div>
@@ -218,6 +232,13 @@ session_start();
         </div>
     </div>
 
+    <!-- Play Song before Skip -->
+    <div class="modal play-before-skip-modal" id="play-before-skip-modal">
+        <div class="home-container">
+            <h2>Please play the song before skipping!</h2>
+            <button data-close-button id="play-before-skip-close" class="close-btn">Okay</button>
+        </div>
+    </div>
 
     <!-- Enter Valid Input Modal -->
     <dialog class="valid-input-modal" id="valid-input-modal">
@@ -229,7 +250,6 @@ session_start();
 
 
     <script src="./JavaScript/fade.js"></script>
-    <script src="./JavaScript/PlayGame/toggleButton.js"></script>
     <script src="./JavaScript/PlayGame/addItemToList.js"></script>
     <script src="./JavaScript/PlayGame/openAndCloseModal.js"></script>
 
@@ -239,7 +259,7 @@ session_start();
         deviceID = 0;
         isPlay = true;
         isFirst = true;
-        currentGuess = "-1";           
+        currentGuess = "-1";
         globalThis.currentGuess = "-1";
         window.onSpotifyWebPlaybackSDKReady = () => {
             const token = "<?php echo $_SESSION['accessToken']; ?>";
@@ -287,7 +307,7 @@ session_start();
 
             document.getElementById('button-toggle').onclick = function() {
                 if (isFirst) {
-                    
+
                     player.togglePlay();
                     $.ajax({
                         url: "app.php?mode=play"
@@ -295,22 +315,22 @@ session_start();
                     setTimeout(autopause, 4000);
                     isFirst = false;
                     currentGuess++;
-                }else if(currentGuess == 0){
+                } else if (currentGuess == 0) {
                     player.resume();
                     setTimeout(autopause, 2000);
-                }else if(currentGuess == 1){
+                } else if (currentGuess == 1) {
                     player.resume();
                     setTimeout(autopause, 4550);
-                }else if(currentGuess == 2){
+                } else if (currentGuess == 2) {
                     player.resume();
                     setTimeout(autopause, 7000);
-                }else if(currentGuess == 3){
+                } else if (currentGuess == 3) {
                     player.resume();
                     setTimeout(autopause, 9000);
-                }else if(currentGuess == 4){
+                } else if (currentGuess == 4) {
                     player.resume();
                     setTimeout(autopause, 12000);
-                }else if(currentGuess > 4){
+                } else if (currentGuess > 4) {
                     player.resume();
                     setTimeout(autopause, 16000);
                 }
@@ -318,6 +338,9 @@ session_start();
                 const btn = document.querySelector('#button-toggle');
                 btn.dataset.value = btn.dataset.value === "true" ? "false" : "true";
                 console.log(btn.dataset.value);
+
+                btn.dataset.clickonce = "true";
+                console.log("Click Once Value: " + btn.dataset.clickonce);
 
                 const vinyl = document.querySelector('.cd-player');
                 vinyl.dataset.value = vinyl.dataset.value === "true" ? "false" : "true";

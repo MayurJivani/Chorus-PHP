@@ -4,6 +4,7 @@ const skipBtn = document.querySelector("#skipBtn");
 const divList = document.querySelector(".guess-container");
 const spanEle = document.querySelector(".fa-icon");
 const liEle = document.querySelector(".guess-output-li");
+const toggleBtn = document.querySelector('#button-toggle');
 const songName = "Hello";
 var count = 0;
 
@@ -13,7 +14,6 @@ function addLists() {
         setTimeout(() => {
             window.location = "./result.php";
         }, 1000);
-
     }
     const ul = divList.querySelector('ul');
     const li = document.createElement('li');
@@ -58,34 +58,39 @@ function addLists() {
 }
 
 function skipLists() {
-    count++;
+    
     if (count == 6) {
         setTimeout(() => {
             window.location = "./result.php";
         }, 1000);
 
     }
-    const ul = divList.querySelector('ul');
-    const li = document.createElement('li');
-    const span1 = document.createElement('span');
-    const span2 = document.createElement('span');
-    const i1 = document.createElement('i');
-    const i2 = document.createElement('i');
-    const i3 = document.createElement('i');
-    i1.className = "skip fa-solid fa-forward-step";
-    i2.className = "correct fa-solid fa-circle-check";
-    i3.className = "wrong fa-solid fa-circle-xmark";
-    i1.style.opacity = 1;
-    i2.style.opacity = 0;
-    i2.style.opacity = 0;
-    span1.append(i1);
-    span1.append(i2);
-    span1.append(i3);
-    span2.innerHTML = "Skipped";
-    addInput.value = '';
-    li.append(span1);
-    li.append(span2);
-    ul.appendChild(li);
+    if (toggleBtn.dataset.clickonce == "true")
+    {
+        count++;
+        const ul = divList.querySelector('ul');
+        const li = document.createElement('li');
+        const span1 = document.createElement('span');
+        const span2 = document.createElement('span');
+        const i1 = document.createElement('i');
+        const i2 = document.createElement('i');
+        const i3 = document.createElement('i');
+        i1.className = "skip fa-solid fa-forward-step";
+        i2.className = "correct fa-solid fa-circle-check";
+        i3.className = "wrong fa-solid fa-circle-xmark";
+        i1.style.opacity = 1;
+        i2.style.opacity = 0;
+        i2.style.opacity = 0;
+        span1.append(i1);
+        span1.append(i2);
+        span1.append(i3);
+        span2.innerHTML = "Skipped";
+        addInput.value = '';
+        li.append(span1);
+        li.append(span2);
+        ul.appendChild(li);
+    }
+   
 }
 
 addBtn.addEventListener('click', () => {
