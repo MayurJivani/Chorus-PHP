@@ -1,5 +1,6 @@
 <?php
 session_start();
+unset($_SESSION['artistID']);
 ?>
 <!DOCTYPE html>
 <html lang="en">
