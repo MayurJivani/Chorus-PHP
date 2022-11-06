@@ -59,7 +59,7 @@ function addLists() {
 
 function skipLists() {
     
-    if (count == 6) {
+    if (count == 5) {
         setTimeout(() => {
             window.location = "./result.php";
         }, 1000);
