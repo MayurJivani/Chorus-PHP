@@ -99,18 +99,30 @@ session_start();
                             <path fill="#4bb749" d="M400,262.1c-76.1,0-137.9,61.7-137.9,137.9S323.9,537.9,400,537.9S537.9,476.1,537.9,400S476.1,262.1,400,262.1z M400,411.7c-6.4,0-11.7-5.2-11.7-11.7s5.2-11.7,11.7-11.7s11.7,5.2,11.7,11.7S406.4,411.7,400,411.7z"></path>
                         </clipPath>
                     </defs>
-                    <?php
-                    require 'vendor/autoload.php';
-                    $api = new SpotifyWebAPI\SpotifyWebAPI();
-                    $api->setAccessToken($_SESSION["accessToken"]);
-                    $results = $api->getArtist($_SESSION['artistID']);
-                    $_SESSION["ArtistName"]=$results->name;
-                    foreach ($results->images as $pfp) {
-                        $artist_pfp = $pfp->url;
-                        $_SESSION["ArtistProfile"]=$artist_pfp;
-                        break;
+                    <?php 
+                    if(isset($_SESSION['artistID'])){
+                        require 'vendor/autoload.php';
+                        $api = new SpotifyWebAPI\SpotifyWebAPI();
+                        $api->setAccessToken($_SESSION["accessToken"]);
+                        $results = $api->getArtist($_SESSION['artistID']);
+                        $_SESSION["ArtistName"]=$results->name;
+                        foreach ($results->images as $pfp) {
+                            $artist_pfp = $pfp->url;
+                            $_SESSION["ArtistProfile"]=$artist_pfp;
+                            break;
+                        }
+                        echo '<image xlink:href=' . "$artist_pfp " . 'x="250" y="250" height="300px" width="300px" clip-path="url(#coverClip)" />';
+                    }else{
+                        require 'vendor/autoload.php';
+                        $api = new SpotifyWebAPI\SpotifyWebAPI();
+                        $api->setAccessToken($_SESSION["accessToken"]);
+                        $results = $api->getPlaylistImage("6UeSakyzhiEt4NB3UAd6NQ");
+                        foreach ($results as $pfp){
+                            $_SESSION["PlaylistProfile"] = $pfp->url;
+                        }
+                        echo '<image xlink:href=' . "$pfp->url " . 'x="250" y="250" height="300px" width="300px" clip-path="url(#coverClip)" />';
                     }
-                    echo '<image xlink:href=' . "$artist_pfp " . 'x="250" y="250" height="300px" width="300px" clip-path="url(#coverClip)" />'
+                    
                     ?>
                 </svg>
             </div>

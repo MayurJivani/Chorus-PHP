@@ -25,6 +25,10 @@ session_start();
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500&family=Happy+Monkey&family=Montserrat:wght@200;400;600&family=Outfit:wght@400;700&family=Red+Hat+Display&family=Varela+Round&display=swap" rel="stylesheet">
 
+    <!-- Ajax -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.1.3/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 </head>
 
 <body>
@@ -60,13 +64,22 @@ session_start();
             </div>
             <p>Guess songs on the Billboard Top 100</p>
             <div class="play-button">
-                <button type="sumbit" onClick="location.href='playGame.php'">Play Now</button>
+                <button type="sumbit" onClick="billboardPlay()">Play Now</button>
             </div>
 
         </div>
     </div>
     <script src="./JavaScript/fade.js"></script>
     <script src="./JavaScript/cardHoverEffect.js"></script>
+    <script>
+        var BB="BillboardXD";
+        function billboardPlay(){
+            $.post('app.php', {
+                ToPlay: BB
+            });
+            location.href = 'playGame.php'; 
+        }
+    </script>
 </body>
 
 </html>
