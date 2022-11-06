@@ -32,11 +32,6 @@ session_start();
 </head>
 
 <body>
-
-    <div class="loader">
-        <div></div>
-    </div>
-
     <svg id="fader"></svg>
     <script>
         fadeInPage();

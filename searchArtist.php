@@ -14,6 +14,7 @@
   <script src="https://kit.fontawesome.com/fddf746e6f.js" crossorigin="anonymous"></script>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
   <!-- CSS sheet link -->
   <link rel="stylesheet" href="./CSS/searchArtist.css">
@@ -26,6 +27,11 @@
 </head>
 
 <body>
+
+  <div class="loader">
+    <i class="fa-solid fa-compact-disc"></i>
+  </div>
+
   <svg id="fader"></svg>
   <script>
     fadeInPage();
@@ -86,6 +92,8 @@
 
     function artistSelect(i) {
       var aid = document.getElementById('artist-id' + i).textContent;
+      const load = document.querySelector('.loader');
+      load.classList.add('active');
       $.post('app.php', {
         artistID: aid
       });
@@ -95,6 +103,7 @@
 
   <script src="./JavaScript/fade.js"></script>
   <script src="./JavaScript/validInputModal.js"></script>
+
 </body>
 
 </html>
