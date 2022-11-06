@@ -43,6 +43,9 @@ session_start();
             var fader = document.getElementById('fader');
             fader.classList.add('fade-out');
         }
+        function guessInput(){
+                currentGuess++;
+            }
     </script>
 
     <div class="header">
@@ -113,7 +116,7 @@ session_start();
                 <input id="addInput" type="text" placeholder="Guess song here">
             </form>
             <div class="buttons">
-                <button id="skipBtn" type="sumbit">Skip</button>
+                <button id="skipBtn" type="sumbit" onclick="guessInput()">Skip</button>
                 <button id="addBtn" type="submit" onclick="guessInput()">Submit</button>
             </div>
         </div>
@@ -222,7 +225,8 @@ session_start();
         deviceID = 0;
         isPlay = true;
         isFirst = true;
-
+        currentGuess = "-1";           
+        globalThis.currentGuess = "-1";
         window.onSpotifyWebPlaybackSDKReady = () => {
             const token = "<?php echo $_SESSION['accessToken']; ?>";
             const player = new Spotify.Player({
@@ -273,11 +277,27 @@ session_start();
                     $.ajax({
                         url: "app.php?mode=play"
                     })
-                    setTimeout(autopause, 3500);
+                    setTimeout(autopause, 4000);
                     isFirst = false;
-                } else {
+                    currentGuess++;
+                }else if(currentGuess == 0){
                     player.resume();
                     setTimeout(autopause, 2000);
+                }else if(currentGuess == 1){
+                    player.resume();
+                    setTimeout(autopause, 4550);
+                }else if(currentGuess == 2){
+                    player.resume();
+                    setTimeout(autopause, 7000);
+                }else if(currentGuess == 3){
+                    player.resume();
+                    setTimeout(autopause, 9000);
+                }else if(currentGuess == 4){
+                    player.resume();
+                    setTimeout(autopause, 12000);
+                }else if(currentGuess > 4){
+                    player.resume();
+                    setTimeout(autopause, 16000);
                 }
 
                 const btn = document.querySelector('#button-toggle');
@@ -301,7 +321,7 @@ session_start();
                 const vinyl = document.querySelector('.cd-player');
                 vinyl.dataset.value = vinyl.dataset.value === "true" ? "false" : "true";
                 console.log("Vinyl: " + btn.dataset.value);
-                player.seek(0 * 1000)
+                player.seek(0)
             }
         }
     </script>
