@@ -1,5 +1,5 @@
-<?php 
-    session_start();
+<?php
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,6 +32,10 @@
 </head>
 
 <body>
+
+    <div class="loader">
+        <div></div>
+    </div>
 
     <svg id="fader"></svg>
     <script>
@@ -98,15 +102,15 @@
                         </clipPath>
                     </defs>
                     <?php
-                        require 'vendor/autoload.php';
-                        $api = new SpotifyWebAPI\SpotifyWebAPI();
-                        $api->setAccessToken($_SESSION["accessToken"]);
-                        $results = $api->getArtist($_SESSION['artistID']);
-                        foreach($results->images as $pfp){
-                                $artist_pfp=$pfp->url;
-                                break;
-                            }
-                        echo '<image xlink:href='."$artist_pfp ".'x="250" y="250" height="300px" width="300px" clip-path="url(#coverClip)" />'
+                    require 'vendor/autoload.php';
+                    $api = new SpotifyWebAPI\SpotifyWebAPI();
+                    $api->setAccessToken($_SESSION["accessToken"]);
+                    $results = $api->getArtist($_SESSION['artistID']);
+                    foreach ($results->images as $pfp) {
+                        $artist_pfp = $pfp->url;
+                        break;
+                    }
+                    echo '<image xlink:href=' . "$artist_pfp " . 'x="250" y="250" height="300px" width="300px" clip-path="url(#coverClip)" />'
                     ?>
                 </svg>
             </div>
@@ -218,75 +222,90 @@
     <script src="./JavaScript/PlayGame/openAndCloseModal.js"></script>
 
     <script src="https://sdk.scdn.co/spotify-player.js"></script>
-    
+
     <script>
         deviceID = 0;
-        isPlay = true; 
-        isFirst = true;  
+        isPlay = true;
+        isFirst = true;
 
         window.onSpotifyWebPlaybackSDKReady = () => {
             const token = "<?php echo $_SESSION['accessToken']; ?>";
             const player = new Spotify.Player({
                 name: 'Chorus',
-                getOAuthToken: cb => { cb(token); },
+                getOAuthToken: cb => {
+                    cb(token);
+                },
                 volume: 0.5
             });
 
             // Ready
-            player.addListener('ready', ({ device_id }) => {
+            player.addListener('ready', ({
+                device_id
+            }) => {
                 console.log('Ready with Device ID', device_id);
                 deviceID = device_id;
                 document.cookie = "deviceID=" + deviceID + ";";
             });
-            
+
             // Not Ready
-            player.addListener('not_ready', ({ device_id }) => {
+            player.addListener('not_ready', ({
+                device_id
+            }) => {
                 console.log('Device ID has gone offline', device_id);
             });
 
-            player.addListener('initialization_error', ({ message }) => {
+            player.addListener('initialization_error', ({
+                message
+            }) => {
                 console.error(message);
             });
 
-            player.addListener('authentication_error', ({ message }) => {
+            player.addListener('authentication_error', ({
+                message
+            }) => {
                 console.error(message);
             });
 
-            player.addListener('account_error', ({ message }) => {
+            player.addListener('account_error', ({
+                message
+            }) => {
                 console.error(message);
             });
 
             document.getElementById('button-toggle').onclick = function() {
-                if(isFirst){
+                if (isFirst) {
                     player.togglePlay();
-                    $.ajax({url:"app.php?mode=play"})
+                    $.ajax({
+                        url: "app.php?mode=play"
+                    })
                     setTimeout(autopause, 3500);
                     isFirst = false;
-                }else{
+                } else {
                     player.resume();
                     setTimeout(autopause, 2000);
                 }
 
                 const btn = document.querySelector('#button-toggle');
-                btn.dataset.value=btn.dataset.value === "true" ? "false" : "true";
+                btn.dataset.value = btn.dataset.value === "true" ? "false" : "true";
                 console.log(btn.dataset.value);
 
                 const vinyl = document.querySelector('.cd-player');
-                vinyl.dataset.value=vinyl.dataset.value === "true" ? "false" : "true";
-                console.log("Vinyl: "+btn.dataset.value);
+                vinyl.dataset.value = vinyl.dataset.value === "true" ? "false" : "true";
+                console.log("Vinyl: " + btn.dataset.value);
 
             };
 
-            player.connect();      
-            function autopause(){
+            player.connect();
+
+            function autopause() {
                 player.pause();
                 const btn = document.querySelector('#button-toggle');
-                btn.dataset.value=btn.dataset.value === "true" ? "false" : "true";
+                btn.dataset.value = btn.dataset.value === "true" ? "false" : "true";
                 console.log(btn.dataset.value);
 
                 const vinyl = document.querySelector('.cd-player');
-                vinyl.dataset.value=vinyl.dataset.value === "true" ? "false" : "true";
-                console.log("Vinyl: "+btn.dataset.value);
+                vinyl.dataset.value = vinyl.dataset.value === "true" ? "false" : "true";
+                console.log("Vinyl: " + btn.dataset.value);
                 player.seek(0 * 1000)
             }
         }

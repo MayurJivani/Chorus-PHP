@@ -56,7 +56,7 @@
                     $artist_pfp=$pfp->url;
                     break;
                 }
-                if($i<=8){
+                if($i<=6){
                     echo "<li class='animated fadeInLeft' onclick='artistSelect({$i})'>";
     
                 echo "<span class='artist-id' id='artist-id{$i}'>".$artist_id."</span>";
