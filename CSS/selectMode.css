@@ -143,6 +143,7 @@ p {
 
 .fav-artist img {
     aspect-ratio: 1.07/1;
+    object-fit: cover;
     width:max(100%, 400px);
     filter: grayscale(1);
 }

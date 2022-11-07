@@ -136,7 +136,7 @@ header {
 .container {
     padding: 30px 0;
     display: flex;
-    gap: 100px;
+    gap: 50px;
 
 }
 
@@ -349,10 +349,10 @@ input:focus::placeholder {
     }
 }
 
-.guess-output li:nth-child(1) {
+.guess-output li {
     background: rgba(255, 255, 255, 0.12);
 }
-
+/* 
 .guess-output li:nth-child(2) {
     background: rgba(255, 255, 255, 0.1);
 }
@@ -371,7 +371,7 @@ input:focus::placeholder {
 
 .guess-output li:nth-child(6) {
     background: rgba(255, 255, 255, 0.01);
-}
+} */
 
 .guess-output li span:nth-child(1) {
     width: 10%;
