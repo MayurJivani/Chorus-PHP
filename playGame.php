@@ -46,6 +46,21 @@ session_start();
 
         function guessInput() {
             currentGuess++;
+            var guess = document.querySelector("#addInput").value;
+            $.post('game.php', {
+                Guessed: guess
+            });
+                $.ajax({
+                type: 'POST',
+                url: './game.php',
+                data: {
+                    Guessed: guess,
+                },
+                    success: function(data) {
+                    $("#output").html(data);
+                }
+            });
+            console.log(guess);
         }
     </script>
 
@@ -134,6 +149,8 @@ session_start();
                 <button data-modal-target="#play-before-skip-modal" id="skipBtn" type="sumbit" onclick="guessInput()">Skip</button>
                 <button id="addBtn" type="submit" onclick="guessInput()">Submit</button>
             </div>
+        </div>
+        <div id="ssoutput">
         </div>
         <!-- Guess List -->
         <div class="guess-container">
