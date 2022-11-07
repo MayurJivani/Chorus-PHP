@@ -90,11 +90,12 @@
         $albumsID = "";
         $options = array("fields"=>'items');
         if(isset($_SESSION['artistID'])){
+            $includeGroups = array("include_groups"=>'single,album');
             $artistID = $_SESSION['artistID'];
             require 'vendor/autoload.php';
             $api = new SpotifyWebAPI\SpotifyWebAPI();
             $api->setAccessToken($_SESSION["accessToken"]);
-            $results=$api->getArtistAlbums($artistID, $options);
+            $results=$api->getArtistAlbums($artistID, $includeGroups);
             foreach ($results->items as $albums) {
                 $albumsID .= $albums->id;
                 $albumsID .= ",";
@@ -108,6 +109,8 @@
                     array_push($TrackNameArray, "$tracks->name");
                 }
             }
+            $TrackArray = array_unique($TrackArray);
+            $TrackNameArray = array_unique($TrackNameArray);
             $Tno=rand('0',count($TrackArray));
             $TrackToPlay=$TrackArray[$Tno];
             $_SESSION['TrackToPlay']=$TrackToPlay;
