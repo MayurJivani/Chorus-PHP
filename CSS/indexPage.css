@@ -507,7 +507,7 @@ header{
     background: #09090a;
     padding:10px 20px;
     margin: 5px 0;
-    transition: 0.5s;
+    transition: transform 0.5s ease;
     font-family: 'Montserrat', sans-serif;
     font-weight: 500;
     font-size: 1rem;
@@ -552,6 +552,7 @@ header{
 .rule-list li:hover{
     transform: scale(1.06);
     background-color:black;
+    color:white;    
 }
 
 .spotify{
@@ -565,9 +566,15 @@ header{
 }
 
 /*About*/
+#about{
+    background-color: #262626;
+}
+
 .about_us{
     width: 80%;
-    margin: 8% auto 10% auto;
+    padding: 8% 0 20% 0;
+    margin: 0 auto 0 auto;
+    background-color: #262626;
 }
 
 .about_heading{
@@ -688,7 +695,7 @@ header{
 }
 
 .footer{
-    margin: 20% 0 0 0;
+    
     font-family: 'Montserrat', sans-serif;
     color: rgba(255,255,255,0.7);
     font-size: 1rem;
