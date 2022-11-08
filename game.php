@@ -1,18 +1,24 @@
 <?php 
-    function guessSong($guess){
+    function guessSong(string $guess){
         session_start();
-        $TrackName=strtoupper($_SESSION['TrackName']);
-        
+        $Track=strtoupper($_SESSION['TrackName']);
         $guess=strtoupper($guess);
-        $guess=explode(' (',$guess);
-        if(strncasecmp($TrackName,$guess,strlen($TrackName)) == '0' OR strncasecmp($TrackName,$guess) <= '3'){
-            echo "<input type='hidden' value='guessed'></input>";
+        $guess = substr($guess, 0, strpos($guess, " ("));
+        $Track = substr($Track, 0, strpos($Track, " ("));
+        $guess=strtoupper($guess);
+        $guessLen=strlen($guess);
+        $TrackLen=strlen($Track);
+        
+        if(preg_match("/{$Track}/i", $guess) && $guessLen == $TrackLen) {
+            echo "<input type='hidden' id='result' value='{$Track}{$guess}'></input>";  
         }else{
-            echo "Not guessed";
+            echo "<input type='hidden' id='result' value='nopezz'></input>";
         }
     }
     if(isset($_POST['Guessed'])){
-        echo "post";
-        guessSong($_POST['Guessed']);
+        $currentGuess=$_POST['currentGuess'];
+        $guess=$_POST['Guessed'];
+        guessSong($guess);
     }
+
 ?>
