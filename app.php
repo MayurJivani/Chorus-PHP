@@ -85,16 +85,15 @@
     }
     function getTrackFromArtitst($aid){
         session_start();
+        require 'vendor/autoload.php';
+        $api = new SpotifyWebAPI\SpotifyWebAPI();
+        $api->setAccessToken($_SESSION["accessToken"]);
         $TrackArray = array();
-        $TrackNameArray = array();
         $albumsID = "";
         $options = array("fields"=>'items');
         if(isset($_SESSION['artistID'])){
             $includeGroups = array("include_groups"=>"album,single");
             $artistID = $_SESSION['artistID'];
-            require 'vendor/autoload.php';
-            $api = new SpotifyWebAPI\SpotifyWebAPI();
-            $api->setAccessToken($_SESSION["accessToken"]);
             $results=$api->getArtistAlbums($artistID, $includeGroups);
             foreach ($results->items as $albums) {
                 $albumsID .= $albums->id;
@@ -105,18 +104,26 @@
             foreach ($album_result->albums as $tracksInAlbum) {
                 $Atracks = $tracksInAlbum->tracks;
                 foreach ($Atracks->items as $tracks) {
-                    array_push($TrackArray, "$tracks->id");
-                    array_push($TrackNameArray, "$tracks->name");
+                    foreach($tracks->artists as $trackAid){
+                        if($trackAid->id == $_SESSION['artistID']){
+                            array_push($TrackArray, "$tracks->id");
+                        }
+                    }
+                    
                 }
             }
-            //$TrackArray = array_unique($TrackArray);
-            //$TrackNameArray = array_unique($TrackNameArray);
+            $options = array("market"=>"ES");
+            $NewTrackName=$api->getArtistTopTracks($_SESSION['artistID'],$options);
+            foreach($NewTrackName->tracks as $tracks){
+                array_push($TrackArray, "$tracks->id");
+            }
+            $TrackArray = array_unique($TrackArray);
             $Tno=rand('0',count($TrackArray));
             $TrackToPlay=$TrackArray[$Tno];
+            $TrackName=$api->getTrack($TrackToPlay);
+            $_SESSION['TrackName']=$TrackName->name;
             $_SESSION['TrackToPlay']=$TrackToPlay;
-            $_SESSION['TrackName'] = $TrackNameArray[$Tno];
             $_SESSION['TrackArray']=$TrackArray;
-            $_SESSION['TrackNameArray']=$TrackNameArray;
         }
     }
     function getTrackFromBillboard(){
@@ -148,12 +155,15 @@
     }
     function NextSong(){
             session_start();
+            require 'vendor/autoload.php';
+            $api = new SpotifyWebAPI\SpotifyWebAPI();
+            $api->setAccessToken($_SESSION["accessToken"]);
             $TrackArray=$_SESSION['TrackArray'];
-            $TrackNameArray=$_SESSION['TrackNameArray'];
             $Tno=rand('0',count($TrackArray));
             $TrackToPlay=$TrackArray[$Tno];
             $_SESSION['TrackToPlay']=$TrackToPlay;
-            $_SESSION['TrackName'] = $TrackNameArray[$Tno];
+            $TrackName=$api->getTrack($TrackToPlay);
+            $_SESSION['TrackName']=$TrackName->name;
     }
     function guessSong(){
 

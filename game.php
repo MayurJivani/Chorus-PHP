@@ -2,15 +2,17 @@
     function guessSong(string $guess){
         session_start();
         $Track=strtoupper($_SESSION['TrackName']);
-        $guess=strtoupper($guess);
-        $guess = substr($guess, 0, strpos($guess, " ("));
-        $Track = substr($Track, 0, strpos($Track, " ("));
+        $guess = substr($guess, strpos($guess, " ("), strlen($guess));
+        $Track = substr($Track, strpos($guess, " ("), strlen($Track));
+        $guess = substr($guess, strpos($guess, " -"), strlen($guess));
+        $Track = substr($Track, strpos($guess, " -"), strlen($Track));
         $guess=strtoupper($guess);
         $guessLen=strlen($guess);
         $TrackLen=strlen($Track);
         
-        if(preg_match("/{$Track}/i", $guess) && $guessLen == $TrackLen) {
-            echo "<input type='hidden' id='result' value='{$Track}{$guess}'></input>";  
+        if(preg_match("/{$guess}/i", $Track) && $guessLen == $TrackLen) {
+            echo "$Track";
+            echo "<input type='hidden' id='result' value='{$guess}'></input>";  
         }else{
             echo "<input type='hidden' id='result' value='nopezz'></input>";
         }
