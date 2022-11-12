@@ -5,6 +5,7 @@ const divList = document.querySelector(".guess-container");
 const spanEle = document.querySelector(".fa-icon");
 const liEle = document.querySelector(".guess-output-li");
 const toggleBtn = document.querySelector('#button-toggle');
+const result = document.querySelector('#result');
 const songName = "Hello";
 var count = 0;
 

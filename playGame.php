@@ -44,17 +44,18 @@ session_start();
             fader.classList.add('fade-out');
         }
 
+        function guessSkip() {
+            currentGuess++;
+        }
         function guessInput() {
             currentGuess++;
             var guess = document.querySelector("#addInput").value;
-            $.post('game.php', {
-                Guessed: guess
-            });
                 $.ajax({
                 type: 'POST',
                 url: './game.php',
                 data: {
                     Guessed: guess,
+                    currentGuess: currentGuess,
                 },
                     success: function(data) {
                     $("#output").html(data);
@@ -146,11 +147,11 @@ session_start();
                 <input id="addInput" type="text" placeholder="Guess song here">
             </form>
             <div class="buttons">
-                <button data-modal-target="#play-before-skip-modal" id="skipBtn" type="sumbit" onclick="guessInput()">Skip</button>
+                <button data-modal-target="#play-before-skip-modal" id="skipBtn" type="sumbit" onclick="guessSkip()">Skip</button>
                 <button id="addBtn" type="submit" onclick="guessInput()">Submit</button>
             </div>
         </div>
-        <div id="ssoutput">
+        <div id="output">
         </div>
         <!-- Guess List -->
         <div class="guess-container">
