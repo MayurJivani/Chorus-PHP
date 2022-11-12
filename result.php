@@ -190,6 +190,98 @@
     <script src="./JavaScript/fade.js"></script>
     <script src="./JavaScript/PlayGame/toggleButton.js"></script>
 
+    <script src="https://sdk.scdn.co/spotify-player.js"></script>
+
+    <script>
+        deviceID = 0;
+        isFirst = true;
+        isPlay = false;
+        window.onSpotifyWebPlaybackSDKReady = () => {
+            const token = "<?php echo $_SESSION['accessToken']; ?>";
+            const player = new Spotify.Player({
+                name: 'Chorus',
+                getOAuthToken: cb => {
+                    cb(token);
+                },
+                volume: 0.5
+            });
+
+            // Ready
+            player.addListener('ready', ({
+                device_id
+            }) => {
+                console.log('Ready with Device ID', device_id);
+                deviceID = device_id;
+                document.cookie = "deviceID=" + deviceID + ";";
+            });
+
+            // Not Ready
+            player.addListener('not_ready', ({
+                device_id
+            }) => {
+                console.log('Device ID has gone offline', device_id);
+            });
+
+            player.addListener('initialization_error', ({
+                message
+            }) => {
+                console.error(message);
+            });
+
+            player.addListener('authentication_error', ({
+                message
+            }) => {
+                console.error(message);
+            });
+
+            player.addListener('account_error', ({
+                message
+            }) => {
+                console.error(message);
+            });
+
+            document.getElementById('button-toggle').onclick = function() {
+                if (isFirst) {
+
+                    player.togglePlay();
+                    $.ajax({
+                        url: "app.php?mode=play"
+                    })
+                    //setTimeout(autopause, 30000);
+                    isFirst = false;
+                    isPlay = true;
+                }else if(isPlay){
+                    player.pause();
+                    isPlay = false;
+                }else if(!isPlay){
+                    player.resume();
+                    isPlay = true;
+                }
+                const btn = document.querySelector('#button-toggle');
+                btn.dataset.value = btn.dataset.value === "true" ? "false" : "true";
+                console.log(btn.dataset.value);
+
+                const vinyl = document.querySelector('.cd-player');
+                vinyl.dataset.value = vinyl.dataset.value === "true" ? "false" : "true";
+                console.log("Vinyl: " + btn.dataset.value);
+
+            };
+
+            player.connect();
+
+            function autopause() {
+                player.pause();
+                const btn = document.querySelector('#button-toggle');
+                btn.dataset.value = btn.dataset.value === "true" ? "false" : "true";
+                console.log(btn.dataset.value);
+
+                const vinyl = document.querySelector('.cd-player');
+                vinyl.dataset.value = vinyl.dataset.value === "true" ? "false" : "true";
+                console.log("Vinyl: " + btn.dataset.value);
+                player.seek(0)
+            }
+        }
+    </script>
     <script>
         function newSong(){
             var aid = "YESSIR";
@@ -201,4 +293,5 @@
         
     </script>
 
+    
 </body>
