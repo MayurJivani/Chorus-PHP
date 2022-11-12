@@ -2,8 +2,8 @@
     require 'vendor/autoload.php';
     session_start();
     $session = new SpotifyWebAPI\Session(
-        '72c28085aad645aabbe0176ebc4a7bf0',
-        '9c03812f866f416fa6e799f8952b07a2',
+        '13f3f5f7945245e9b8a02a728205f780',
+        'dc405c35d15d47b3a947f4dafeb3d615',
         'http://localhost/Chorus/callback.php'
     );
     
