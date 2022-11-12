@@ -318,27 +318,27 @@ session_start();
                     $.ajax({
                         url: "app.php?mode=play"
                     })
-                    setTimeout(autopause, 4000);
+                    setTimeout(autopause, 7000);
                     isFirst = false;
                     currentGuess++;
                 } else if (currentGuess == 0) {
                     player.resume();
-                    setTimeout(autopause, 2000);
+                    setTimeout(autopause, 5000);
                 } else if (currentGuess == 1) {
                     player.resume();
-                    setTimeout(autopause, 4550);
+                    setTimeout(autopause, 7550);
                 } else if (currentGuess == 2) {
                     player.resume();
-                    setTimeout(autopause, 7000);
+                    setTimeout(autopause, 9000);
                 } else if (currentGuess == 3) {
                     player.resume();
-                    setTimeout(autopause, 9000);
+                    setTimeout(autopause, 12000);
                 } else if (currentGuess == 4) {
                     player.resume();
-                    setTimeout(autopause, 12000);
+                    setTimeout(autopause, 15000);
                 } else if (currentGuess > 4) {
                     player.resume();
-                    setTimeout(autopause, 16000);
+                    setTimeout(autopause, 20000);
                 }
 
                 const btn = document.querySelector('#button-toggle');
