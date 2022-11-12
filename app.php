@@ -154,16 +154,25 @@
             //$_SESSION['ArtistName']=$TrackArtistNameArray=$TrackArtistRequest->artist->name;
     }
     function NextSong(){
-            session_start();
-            require 'vendor/autoload.php';
-            $api = new SpotifyWebAPI\SpotifyWebAPI();
-            $api->setAccessToken($_SESSION["accessToken"]);
-            $TrackArray=$_SESSION['TrackArray'];
-            $Tno=rand('0',count($TrackArray));
-            $TrackToPlay=$TrackArray[$Tno];
-            $_SESSION['TrackToPlay']=$TrackToPlay;
-            $TrackName=$api->getTrack($TrackToPlay);
-            $_SESSION['TrackName']=$TrackName->name;
+        session_start();
+        require 'vendor/autoload.php';
+        $api = new SpotifyWebAPI\SpotifyWebAPI();
+        $api->setAccessToken($_SESSION["accessToken"]);
+        $TrackArray=$_SESSION['TrackArray'];
+        $Tno=rand('0',count($TrackArray));
+        $TrackToPlay=$TrackArray[$Tno];
+        $_SESSION['TrackToPlay']=$TrackToPlay;
+        $TrackName=$api->getTrack($TrackToPlay);
+        $_SESSION['TrackName']=$TrackName->name;
+        foreach ($TrackName->album->artists as $artist) {
+            $artist_name=$artist->name;
+            foreach($TrackName->album->images as $pfp){
+                $artist_pfp=$pfp->url;
+                break;
+            }         
+        }
+        $_SESSION["ArtistProfile"]=$artist_pfp;
+        $_SESSION["ArtistName"]=$artist_name;
     }
     function guessSong(){
 

@@ -10,11 +10,10 @@
         $guessLen=strlen($guess);
         $TrackLen=strlen($Track);
         
-        if(preg_match("/{$guess}/i", $Track) && $guessLen == $TrackLen) {
-            echo "$Track";
-            echo "<input type='hidden' id='result' value='{$guess}'></input>";  
+        if(preg_match("/{$Track}/i", $guess) && $guessLen == $TrackLen) {
+            echo "<input type='hidden' id='guessResult' data-booleanvalue='{$Track}'></input>";  
         }else{
-            echo "<input type='hidden' id='result' value='nopezz'></input>";
+            echo "<input type='hidden' id='guessResult' data-booleanvalue='nopezz'></input>";
         }
     }
     if(isset($_POST['Guessed'])){

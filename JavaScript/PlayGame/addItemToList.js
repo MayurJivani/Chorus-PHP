@@ -6,7 +6,7 @@ const spanEle = document.querySelector(".fa-icon");
 const liEle = document.querySelector(".guess-output-li");
 const toggleBtn = document.querySelector('#button-toggle');
 const result = document.querySelector('#result');
-const songName = "Hello";
+const songName = document.querySelector('#guessResult');
 var count = 0;
 
 
@@ -36,7 +36,7 @@ function addLists() {
         })
         return;
     }
-    if (addInput.value.toUpperCase() === songName.toUpperCase()) {
+    if (addInput.value.toUpperCase() === songName.dataset.booleanvalue.toUpperCase()) {
         i1.style.opacity = 0;
         i2.style.opacity = 1;
         i3.style.opacity = 0;

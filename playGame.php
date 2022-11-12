@@ -52,7 +52,7 @@ session_start();
             var guess = document.querySelector("#addInput").value;
                 $.ajax({
                 type: 'POST',
-                url: './game.php',
+                url: './game2.php',
                 data: {
                     Guessed: guess,
                     currentGuess: currentGuess,
@@ -61,7 +61,7 @@ session_start();
                     $("#output").html(data);
                 }
             });
-            console.log(guess);
+            //console.log(guess);
         }
     </script>
 
@@ -152,6 +152,7 @@ session_start();
             </div>
         </div>
         <div id="output">
+        <input type='hidden' id='guessResult' data-booleanvalue='<?php echo $_SESSION["TrackName"]; ?>'></input>
         </div>
         <!-- Guess List -->
         <div class="guess-container">
