@@ -144,9 +144,7 @@
             }
             
             $Tno=rand('0',count($TrackArray));
-            $TrackToPlay=$TrackArray[$Tno];
-            //$TrackArtistRequest=$api->getTracks("$TrackToPlay");
-            
+            $TrackToPlay=$TrackArray[$Tno];            
             $_SESSION['TrackToPlay']=$TrackToPlay;
             $_SESSION['TrackName'] = $TrackNameArray[$Tno];
             $_SESSION['TrackArray']=$TrackArray;
