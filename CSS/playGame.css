@@ -140,6 +140,10 @@ header {
 
 }
 
+.stats-open-btn{
+    display: none;
+}
+
 /*Vinyl-section*/
 
 .player-container {

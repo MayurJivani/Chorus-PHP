@@ -1,6 +1,23 @@
 <?php
 session_start();
 unset($_SESSION['artistID']);
+$conn = new mysqli("localhost", "root", "", "chorus");
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+$name = $_SESSION["name"];
+$id = $_SESSION["id"];
+$echeck = "SELECT user_id FROM users WHERE user_id = '$id'";
+$result = $conn->query($echeck);
+if ($result->num_rows > 0) {
+    
+} else {
+    $insert = "INSERT INTO users VALUES ('$id', '$name')";
+    if ($conn->query($insert) === TRUE) {
+        //header("location: index.php");
+    }
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -73,12 +90,13 @@ unset($_SESSION['artistID']);
     <script src="./JavaScript/fade.js"></script>
     <script src="./JavaScript/cardHoverEffect.js"></script>
     <script>
-        var BB="BillboardXD";
-        function billboardPlay(){
+        var BB = "BillboardXD";
+
+        function billboardPlay() {
             $.post('app.php', {
                 ToPlay: BB
             });
-            location.href = 'playGame.php'; 
+            location.href = 'playGame.php';
         }
     </script>
 </body>
