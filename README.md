@@ -1,13 +1,11 @@
 # Chorus
-A music guessing game developed using PHP and JS.
+
+Chorus is a dynamic and entertaining music guessing game that seamlessly combines PHP and Vanilla JavaScript. Inspired by the popular game Wordle, Chorus offers users a captivating experience where they can test their music knowledge while enjoying their favorite tunes.
 
 # Demo Video
 [Here](https://drive.google.com/file/d/1wddugDO1Hbh3EKOz944R5epaJv6EXRFF/view?usp=sharing)
 
-## Overview:
-Chorus is a dynamic and entertaining music guessing game that seamlessly combines PHP and Vanilla JavaScript. Inspired by the popular game Wordle, Chorus offers users a captivating experience where they can test their music knowledge while enjoying their favorite tunes.
-
-Key Features:
+## Key Features:
 
 Spotify API Integration:
 
