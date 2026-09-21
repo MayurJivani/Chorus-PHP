@@ -3,6 +3,10 @@
 ![PHP](https://img.shields.io/badge/PHP-777BB4?style=flat-square&logo=php&logoColor=white)
 ![Spotify](https://img.shields.io/badge/Spotify-Web%20API-1DB954?style=flat-square&logo=spotify&logoColor=white)
 ![Superseded](https://img.shields.io/badge/superseded%20by-Chorus-lightgrey?style=flat-square)
+[![Stars](https://img.shields.io/github/stars/MayurJivani/Chorus-PHP?style=flat-square)](https://github.com/MayurJivani/Chorus-PHP/stargazers)
+[![Issues](https://img.shields.io/github/issues/MayurJivani/Chorus-PHP?style=flat-square)](https://github.com/MayurJivani/Chorus-PHP/issues)
+![Code size](https://img.shields.io/github/languages/code-size/MayurJivani/Chorus-PHP?style=flat-square)
+[![Last commit](https://img.shields.io/github/last-commit/MayurJivani/Chorus-PHP?style=flat-square)](https://github.com/MayurJivani/Chorus-PHP/commits/main)
 
 The original Chorus: a Wordle-style music guessing game in PHP and vanilla
 JavaScript. Log in with Spotify, pick Billboard's Top 100 or an artist's
