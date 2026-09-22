@@ -7,8 +7,6 @@
 [![Issues](https://img.shields.io/github/issues/MayurJivani/Chorus-PHP?style=flat-square)](https://github.com/MayurJivani/Chorus-PHP/issues)
 ![Code size](https://img.shields.io/github/languages/code-size/MayurJivani/Chorus-PHP?style=flat-square)
 [![Last commit](https://img.shields.io/github/last-commit/MayurJivani/Chorus-PHP?style=flat-square)](https://github.com/MayurJivani/Chorus-PHP/commits/main)
-![vintage](https://img.shields.io/badge/vintage-2023-95a5a6?style=flat-square)
-![snippet](https://img.shields.io/badge/snippet-3%20seconds%20flat-1DB954?style=flat-square)
 
 The original Chorus: a Wordle-style music guessing game in PHP and vanilla
 JavaScript. Log in with Spotify, pick Billboard's Top 100 or an artist's
